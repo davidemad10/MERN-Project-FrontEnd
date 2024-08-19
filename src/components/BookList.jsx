@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./BookList.module.css";
+import styles from "../styles/BookList.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function BooksList() {
