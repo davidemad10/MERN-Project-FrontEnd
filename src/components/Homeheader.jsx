@@ -1,4 +1,4 @@
-import '../Homeheader.css';
+import '../styles/Homeheader.css';
 import { useRef } from 'react';
 
 function Homeheader() {
