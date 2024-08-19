@@ -1,15 +1,20 @@
-import { useState } from "react";
-import Home from "./components/Home";
-import "./styles/App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Home from "./components/Home";
 import BooksList from "./components/BookList";
+// import BookDetails from "./components/BookDetails";
+import "./styles/BookList.module.css";
 
 function App() {
   return (
-    <>
-      {/* <Home></Home> */}
-      <BooksList/>
-    </>
+    // <Router>
+    //   <Routes>
+    //     <Route path="/" element={<Home />} />
+    //     <Route path="/books" element={<BooksList />} />
+    //     <Route path="/books/:id" element={<BookDetails />} />
+    //   </Routes>
+    // </Router>
+
+    <BooksList></BooksList>
   );
 }
 
