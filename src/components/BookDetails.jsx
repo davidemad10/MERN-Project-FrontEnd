@@ -8,7 +8,7 @@ function BooksList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/books")
+    fetch("http://localhost:5000/books/id")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -38,10 +38,8 @@ function BooksList() {
       {books.map((book) => (
         <div className={styles.row} key={book._id}>
           <div className={styles.card}>
-            {/* <Link to={`/books/${book._id}`}> */}
             <img src={book.image}></img>
             <h2>{book.title}</h2>
-            {/* </Link> */}
           </div>
         </div>
       ))}
