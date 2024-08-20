@@ -1,0 +1,11 @@
+.bookcardimg, .searchedbookcard {
+    width: 160px;
+    height: 240px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.bookcardimg:hover {
+    transform: scale(1.01) translate(1%,1%);
+    margin: 0rem 1rem;
+}
