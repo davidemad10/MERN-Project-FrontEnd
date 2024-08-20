@@ -1,5 +1,3 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import BooksList from "./components/BookList";
