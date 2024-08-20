@@ -18,16 +18,16 @@ function Homeheader({ sendData }) {
                 </button> */}
 
         <div className="container-fluid d-flex flex-wrap">
-          <a
+          <Link
             className="navbar-brand my-auto text-secondary me-4"
             style={{
               fontSize: "x-large",
               fontWeight: 500,
             }}
-            href="#"
+            to="/"
           >
             Good Reads
-          </a>
+          </Link>
           <ul className="nav me-auto">
             <li className="nav-item">
               <Link

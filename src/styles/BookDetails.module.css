@@ -1,0 +1,87 @@
+.resimg {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 60px;
+}
+
+.resimg img {
+  width: 200px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.resimg p {
+  margin: 0;
+  font-size: 40px;
+  font-weight: bold;
+  display: block;
+}
+.resimg div {
+  display: flex;
+  flex-direction: column;
+}
+.descContainer {
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+/* Responsive styles */
+@media (max-width: 480px) {
+  .resimg {
+    margin-left: 0;
+  }
+  .resimg p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+@media (max-width: 450px) {
+  .resimg {
+    margin-left: 0;
+  }
+  .resimg p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 768px) {
+  .resimg {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
+
+  .resimg img {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .descContainer {
+    width: 80%;
+  }
+
+  .resimg p {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .resimg {
+    margin-left: 0;
+  }
+
+  .resimg p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .descContainer {
+    width: 100%;
+    padding: 5px;
+  }
+}
