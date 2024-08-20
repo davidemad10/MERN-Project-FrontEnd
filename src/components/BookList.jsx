@@ -42,10 +42,10 @@ function BooksList() {
         {books.map((book) => (
           <div className={styles.row} key={book._id}>
             <div className={styles.card}>
-              {/* <Link to={`/books/${book._id}`}> */}
-              <img src={book.image}></img>
-              <h2>{book.title}</h2>
-              {/* </Link> */}
+              <Link to={`/books/${book._id}`} className="no-decoration">
+                <img src={book.image}></img>
+                <h2>{book.title}</h2>
+              </Link>
             </div>
           </div>
         ))}
