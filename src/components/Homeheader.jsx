@@ -30,29 +30,41 @@ function Homeheader({ sendData }) {
           </a>
           <ul className="nav me-auto">
             <li className="nav-item">
-              <a
-                href="/"
+              <Link
+                to="/"
                 style={fontSize}
                 className="nav-link link-dark px-2 active"
                 aria-current="page"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#" style={fontSize} className="nav-link link-dark px-2">
+              <Link
+                to="/Categories"
+                style={fontSize}
+                className="nav-link link-dark px-2"
+              >
                 Categories
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#" style={fontSize} className="nav-link link-dark px-2">
+              <Link
+                to="/books"
+                style={fontSize}
+                className="nav-link link-dark px-2"
+              >
                 Books
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#" style={fontSize} className="nav-link link-dark px-2">
+              <Link
+                to="/authors"
+                style={fontSize}
+                className="nav-link link-dark px-2"
+              >
                 Authors
-              </a>
+              </Link>
             </li>
           </ul>
 
