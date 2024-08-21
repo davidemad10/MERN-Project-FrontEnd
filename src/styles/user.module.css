@@ -1,0 +1,112 @@
+/* Container */
+.container {
+    max-width: 60%;
+    margin: 5% auto;
+    padding: 3%;
+    background-color: #ffffff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Default shadow */
+    text-align: center;
+    transition: box-shadow 0.3s; /* Smooth shadow transition */
+  }
+  
+  /* Hover Effect */
+  .container:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+  }
+  
+  /* Header */
+  .header {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Messages */
+  .messages {
+    margin-bottom: 20px;
+  }
+  
+  /* Success Message */
+  .successMessage {
+    color: #27ae60;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  /* Error Message */
+  .errorMessage {
+    color: #e74c3c;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  
+
+  .regForm{
+    display: block;
+    width: 70%;
+    align-items: center;
+    margin: auto auto;
+    padding: 20px;
+  }
+
+  /* Label */
+  .formLabel {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+  }
+
+  /* Input */
+  .formInput {
+    width: 75%;
+    height: 55px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .formInput:focus {
+    border-color: #88b9df;
+    box-shadow: 0 0 15px rgba(114, 192, 223, 0.5);
+    outline: none;
+  }
+  
+  /* Button */
+  .button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 90%;
+    }
+  }
+  
+  /* Set the background of the body to white */
+  body {
+    background-color: #ffffff; /* White background */
+  }
