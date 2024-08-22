@@ -58,6 +58,7 @@ function BooksDetails() {
       stars.push(
         <FontAwesomeIcon
           key={`full-${i}`}
+          size="xs"
           icon={faStar}
           style={{ color: "rgb(255, 215, 0)" }}
         />
@@ -68,6 +69,7 @@ function BooksDetails() {
       stars.push(
         <FontAwesomeIcon
           key="half"
+          size="xs"
           icon={faStarHalfAlt}
           style={{ color: "rgb(255, 215, 0)" }}
         />
@@ -78,6 +80,7 @@ function BooksDetails() {
       stars.push(
         <FontAwesomeIcon
           key={`empty-${i}`}
+          size="xs"
           icon={faStarRegular}
           style={{ color: "lightgray" }}
         />
