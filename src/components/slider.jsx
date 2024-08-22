@@ -12,7 +12,7 @@ function Slider() {
       <div className={`carousel-inner ${styles.carouselInner}`}>
         <div class="carousel-item active">
           <img
-            src="../../public/background image/2.jpg"
+            src="https://res.cloudinary.com/df3w1hm4v/image/upload/v1724326878/2_k15mk3.jpg"
             class="d-block w-100"
             alt="..."
           />
