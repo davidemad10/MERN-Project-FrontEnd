@@ -3,7 +3,6 @@ import Homeheader from "./Homeheader";
 import Homebody from "./Homebody";
 import Search from "./Search";
 import { useState } from "react";
-import Slider from "./slider";
 
 function Home() {
   const [sharedData, setSharedData] = useState();
@@ -16,8 +15,7 @@ function Home() {
     <>
       <div className="container-fluid">
         <Homeheader sendData={handleDataFromChildA} />
-        <Slider />
-        {sharedData ? <Search data={sharedData} /> : <Homebody />}
+        {sharedData ? <Search data={sharedData}/> : <Homebody />}
         <Homefooter />
       </div>
     </>

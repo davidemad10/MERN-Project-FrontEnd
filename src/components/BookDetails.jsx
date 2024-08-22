@@ -57,7 +57,7 @@ function BooksDetails() {
     for (let i = 0; i < fullStars; i++) {
       stars.push(
         <FontAwesomeIcon
-          size="xs"
+          key={`full-${i}`}
           icon={faStar}
           style={{ color: "rgb(255, 215, 0)" }}
         />
@@ -67,7 +67,6 @@ function BooksDetails() {
     if (halfStar) {
       stars.push(
         <FontAwesomeIcon
-          size="xs"
           key="half"
           icon={faStarHalfAlt}
           style={{ color: "rgb(255, 215, 0)" }}
@@ -78,7 +77,6 @@ function BooksDetails() {
     for (let i = 0; i < emptyStars; i++) {
       stars.push(
         <FontAwesomeIcon
-          size="xs"
           key={`empty-${i}`}
           icon={faStarRegular}
           style={{ color: "lightgray" }}
@@ -87,7 +85,6 @@ function BooksDetails() {
     }
     return stars;
   };
-
   return (
     <>
       <Homeheader />
