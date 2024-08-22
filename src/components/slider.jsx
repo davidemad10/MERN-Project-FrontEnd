@@ -14,35 +14,35 @@ function Slider() {
           <img
             src="https://res.cloudinary.com/df3w1hm4v/image/upload/v1724326878/2_k15mk3.jpg"
             class="d-block w-100"
-            alt="..."
+            alt="qoute"
           />
         </div>
         <div class="carousel-item">
           <img
-            // src="../../public/background image/3.jpg"
+            src="https://quotefancy.com/media/wallpaper/3840x2160/365318-Lisa-See-Quote-Read-a-thousand-books-and-your-words-will-flow-like.jpg"
             class="d-block w-100"
-            alt="..."
+            alt="qoute"
           />
         </div>
         <div class="carousel-item">
           <img
-            // src="../../public/background image/4.jpg"
+            src="https://quotefancy.com/media/wallpaper/3840x2160/120287-Will-Smith-Quote-The-keys-to-life-are-running-and-reading.jpg"
             class="d-block w-100"
-            alt="..."
+            alt="qoute"
           />
         </div>
         <div class="carousel-item">
           <img
-            // src="../../public/background image/5.jpg"
+            src="https://quotefancy.com/media/wallpaper/3840x2160/4744474-Orhan-Pamuk-Quote-I-read-a-book-one-day-and-my-whole-life-was.jpg"
             class="d-block w-100"
-            alt="..."
+            alt="qoute"
           />
         </div>
         <div class="carousel-item">
           <img
-            // src="../../public/background image/6.jpg"
+            src="https://quotefancy.com/media/wallpaper/3840x2160/4686014-Margaret-Atwood-Quote-In-the-end-we-ll-all-become-stories.jpg"
             class="d-block w-100"
-            alt="..."
+            alt="qoute"
           />
         </div>
       </div>
