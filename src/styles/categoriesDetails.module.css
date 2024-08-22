@@ -3,18 +3,32 @@
   height: 91vh;
   object-fit: cover;
 }
+
 #sliderbtn {
   background-color: transparent;
 }
 
+/* Media queries for responsiveness */
 @media (max-width: 768px) {
-  .carousel-inner.carouselInner img {
+  .carouselInner img {
     height: 400px;
   }
 }
 
 @media (max-width: 576px) {
-  .carousel-inner.carouselInner img {
+  .carouselInner img {
     height: 300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .carouselInner img {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .carouselInner img {
+    height: 250px;
   }
 }
