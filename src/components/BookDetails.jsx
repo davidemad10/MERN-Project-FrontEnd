@@ -89,7 +89,7 @@ function BooksDetails() {
             </div>
           ))
         ) : (
-          <p>No reviews yet.</p>
+          <p className={styles.reviewCard}>No reviews yet.</p>
         )}
       </div>
       <Homefooter />

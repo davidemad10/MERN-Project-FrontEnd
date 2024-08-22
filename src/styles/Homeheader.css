@@ -1,13 +1,13 @@
 .xx:focus {
-    outline: none;
+  outline: none;
 }
 
 .xx::placeholder {
-    font-weight: 300;
-    font-size: 0.9rem;
+  font-weight: 300;
+  font-size: 0.9rem;
 }
 
 .headersearchicon {
-    border: none;
-    padding-left: 0.5rem;
+  border: none;
+  padding-left: 0.5rem;
 }
