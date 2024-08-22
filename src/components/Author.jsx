@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/BookList.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Homeheader from "./Homeheader";
 
-function BooksList() {
-  const [books, setBooks] = useState([]);
+function Author() {
+  const [authors, setAuthors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,7 +17,7 @@ function BooksList() {
         return response.json();
       })
       .then((data) => {
-        setBooks(data.data.books);
+        setAuthors(data.data.authors);  // Updated to reflect author data
         setLoading(false);
       })
       .catch((error) => {
@@ -34,30 +35,20 @@ function BooksList() {
   }
 
   return (
-    // <div className={styles.book_list}>
-    //   {books.map((book) => (
-    //     <div className={styles.row}>
-    //       <div className={styles.card} key={book._id}>
-    //         <img src={book.image}></img>
-    //         <h3>{book.title}</h3>
-    //       </div>
-    //     </div>
-    //   ))}
-    // </div>
-
     <>
+      <Homeheader/>
       <div className={styles.cardStyle}>
-        {books.map((book) => (
-          <div className="card" style={{ width: "18rem" }} key={book._id}>
+        {authors.map((author) => (
+          <div className="card" style={{ width: "18rem" }} key={author._id}>
             <img
-              src={book.image}
+              src={author.image}  // Assuming each author has an image property
               className={`card-img-top ${styles.cardImage}`}
-              alt={book.title}
+              alt={author.firstName}  // Use author's first name as alt text
             ></img>
             <div className="card-body">
-              <h6 className="card-title">{book.title}</h6>
+              <h6 className="card-title">{`${author.firstName} ${author.lastName}`}</h6>  {/* Display full name */}
               <a href="#" className="btn btn-primary">
-                Go somewhere
+                View Author
               </a>
             </div>
           </div>
@@ -67,4 +58,4 @@ function BooksList() {
   );
 }
 
-export default BooksList;
+export default Author;
