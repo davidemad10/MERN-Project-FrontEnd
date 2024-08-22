@@ -89,9 +89,11 @@ function Homeheader({ sendData }) {
           </div>
           <ul className="nav">
             <li className="nav-item">
-              <a href="#" style={fontSize} className="nav-link link-dark px-2">
-                Login
-              </a>
+            <Link
+                to="/users/login"
+                style={fontSize}
+                className="nav-link link-dark px-2"
+              >Login</Link>
             </li>
             <li className="nav-item">
               <Link
