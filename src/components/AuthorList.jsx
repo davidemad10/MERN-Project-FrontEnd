@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import styles from "../styles/BookList.module.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "../styles/AuthorList.module.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import Homeheader from "./Homeheader";
+import Homefooter from "./Homefooter";
+import { Link } from "react-router-dom";
 
 function Author() {
   const [authors, setAuthors] = useState([]);
@@ -17,7 +19,7 @@ function Author() {
         return response.json();
       })
       .then((data) => {
-        setAuthors(data.data.authors);  // Updated to reflect author data
+        setAuthors(data.data.authors); // Updated to reflect author data
         setLoading(false);
       })
       .catch((error) => {
@@ -33,27 +35,26 @@ function Author() {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
-
   return (
     <>
-      <Homeheader/>
-      <div className={styles.cardStyle}>
+      <Homeheader />
+      <div className={styles.book_list}>
         {authors.map((author) => (
-          <div className="card" style={{ width: "18rem" }} key={author._id}>
-            <img
-              src={author.image}  // Assuming each author has an image property
-              className={`card-img-top ${styles.cardImage}`}
-              alt={author.firstName}  // Use author's first name as alt text
-            ></img>
-            <div className="card-body">
-              <h6 className="card-title">{`${author.firstName} ${author.lastName}`}</h6>  {/* Display full name */}
-              <a href="#" className="btn btn-primary">
-                View Author
-              </a>
+          <div className={styles.row} key={author._id}>
+            <div className={styles.card}>
+              <Link to={`/authors/${author._id}`} className="no-decoration">
+                <img
+                  src={author.image} // Assuming each author has an image property
+                  alt={author.firstName} // Use author's first name as alt text
+                ></img>
+                <h2>{author.firstName} {author.lastName}</h2>
+                <p>{author.disc}</p>
+              </Link>
             </div>
           </div>
         ))}
       </div>
+      <Homefooter />
     </>
   );
 }
