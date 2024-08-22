@@ -1,36 +1,41 @@
 import { useEffect, useState } from "react";
-import '../styles/HomeBooksection.css';
+import "../styles/HomeBooksection.css";
 
 function GetAuthors({ data }) {
-    const [authors, setAuthors] = useState([]);
-    useEffect(() => {
-        fetch(`http://localhost:5000/authors/${data.trim()}`)
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error("Something went wrong!")
-                }
-                return res.json()
-            })
-            .then((data) => {
-                setAuthors(data.data.books)
-            })
-            .catch((error) => {
-                return console.log("Error: ", error)
-            })
-    })
-    return (
-        <>
-            <div className="searchedauthors">
-                {authors.length > 0 
-                ? authors.map((author, index)=>{
-                    <div className="searchedbookcard flex-direction-row" key={index}>
-                        author.photo ? <img src={author.photo} /> : <img src='' alt={`${author.firstName} ${author.lastName}`} />
-                    </div>
-                })
-                : <p className="mb-4">No Authors have been found</p>}
-            </div>
-        </>
-    )
+  const [authors, setAuthors] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/authors/${data.trim()}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Something went wrong!");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+
+        setAuthors(data.data.books);
+      })
+      .catch((error) => {
+        return console.log("Error: ", error);
+      });
+  });
+  return (
+    <>
+      <div className="searchedauthors">
+        {authors.length > 0 ? (
+          authors.map((author, index) => {
+            <div className="searchedbookcard flex-direction-row" key={index}>
+              author.photo ? <img src={author.image} /> :{" "}
+              <img src="" alt={`${author.firstName} ${author.lastName}`} />
+            </div>;
+          })
+        ) : (
+          <p className="mb-4">No Authors have been found</p>
+        )}
+      </div>
+    </>
+  );
 }
 
 export default GetAuthors;
