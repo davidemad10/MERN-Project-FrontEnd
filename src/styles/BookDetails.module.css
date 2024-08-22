@@ -13,9 +13,7 @@
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-/* .starhover:hover {
-  transform: translateY(-5px);
-} */
+
 .resimg p {
   margin: 0;
   font-size: 40px;
@@ -43,6 +41,34 @@
   padding: 10px;
   box-sizing: border-box;
 }
+.reviewsSection {
+  margin-top: 2rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+.reviewCard {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.reviewerName {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.reviewDate {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.reviewComment {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
 /* Responsive styles */
 @media (max-width: 480px) {
   .resimg {

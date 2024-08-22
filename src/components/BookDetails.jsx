@@ -75,6 +75,23 @@ function BooksDetails() {
           </div>
         </div>
       </div>
+
+      <div className={styles.reviewsSection}>
+        <h3>Reviews</h3>
+        {book.data.Book.reviews && book.data.Book.reviews.length > 0 ? (
+          book.data.Book.reviews.map((review) => (
+            <div key={review._id} className={styles.reviewCard}>
+              <h4 className={styles.reviewerName}>{review.reviewerName}</h4>
+              <p className={styles.reviewDate}>
+                {new Date(review.createdAt).toLocaleDateString()}
+              </p>
+              <p className={styles.reviewComment}>{review.comment}</p>
+            </div>
+          ))
+        ) : (
+          <p>No reviews yet.</p>
+        )}
+      </div>
       <Homefooter />
     </>
   );
