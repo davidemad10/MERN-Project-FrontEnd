@@ -19,28 +19,28 @@ function Slider() {
         </div>
         <div class="carousel-item">
           <img
-            src="../../public/background image/3.jpg"
+            // src="../../public/background image/3.jpg"
             class="d-block w-100"
             alt="..."
           />
         </div>
         <div class="carousel-item">
           <img
-            src="../../public/background image/4.jpg"
+            // src="../../public/background image/4.jpg"
             class="d-block w-100"
             alt="..."
           />
         </div>
         <div class="carousel-item">
           <img
-            src="../../public/background image/5.jpg"
+            // src="../../public/background image/5.jpg"
             class="d-block w-100"
             alt="..."
           />
         </div>
         <div class="carousel-item">
           <img
-            src="../../public/background image/6.jpg"
+            // src="../../public/background image/6.jpg"
             class="d-block w-100"
             alt="..."
           />
