@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/BookDetails.module.css";
 import { Link, useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faStar,
-  faStarHalfAlt,
-  faStar as faStarRegular,
-} from "@fortawesome/free-solid-svg-icons";
 import Homeheader from "./Homeheader";
 import Homefooter from "./Homefooter";
+import generateStars from "./stargenerate";
+import useCategory from "../hook/useCategory";
 
 function BooksDetails() {
   const { id } = useParams();
@@ -16,6 +12,12 @@ function BooksDetails() {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const {
+    category,
+    loading: categoryLoading,
+    error: categoryError,
+  } = useCategory(book?.data?.Book?.categoryId);
+
   useEffect(() => {
     fetch(`${api_uri}/${id}`)
       .then((res) => {
@@ -34,60 +36,17 @@ function BooksDetails() {
         setLoading(false);
       });
   }, [id]);
-  if (loading) {
+  if (loading || categoryLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
-    return <p>Error: {error}</p>;
+  if (error || categoryError) {
+    return <p>Error: {error || categoryError}</p>;
   }
 
   if (!book) {
     return <p>No book found.</p>;
   }
-
-  //function to generate stars
-  const generateStars = (rating) => {
-    const maxStars = 5;
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 !== 0;
-    const emptyStars = maxStars - fullStars - (halfStar ? 1 : 0);
-
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(
-        <FontAwesomeIcon
-          key={`full-${i}`}
-          size="xs"
-          icon={faStar}
-          style={{ color: "rgb(255, 215, 0)" }}
-        />
-      );
-    }
-
-    if (halfStar) {
-      stars.push(
-        <FontAwesomeIcon
-          key="half"
-          size="xs"
-          icon={faStarHalfAlt}
-          style={{ color: "rgb(255, 215, 0)" }}
-        />
-      );
-    }
-
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(
-        <FontAwesomeIcon
-          key={`empty-${i}`}
-          size="xs"
-          icon={faStarRegular}
-          style={{ color: "lightgray" }}
-        />
-      );
-    }
-    return stars;
-  };
   return (
     <>
       <Homeheader />
@@ -99,11 +58,17 @@ function BooksDetails() {
         ></img>
         <div>
           <p> {book.data.Book.title}</p>
-          <p>
-            {book.data.Book.rating ? generateStars(book.data.Book.rating) : ""}
-            <span style={{ fontSize: "2rem", paddingLeft: "1rem" }}>
-              {book.data.Book.rating}
+          <Link
+            to={`/categories/${book.data.Book.categoryId}`}
+            className="no-decoration"
+          >
+            <span className={styles.categorynamespan}>
+              {category.data.Category.categoryName}
             </span>
+          </Link>
+          <p className={styles.starhover}>
+            {book.data.Book.rating ? generateStars(book.data.Book.rating) : ""}
+            <span className={styles.ratingspan}>{book.data.Book.rating}</span>
           </p>
           <div className={styles.descContainer}>
             <span style={{ fontSize: "1rem" }}>{book.data.Book.desc}</span>

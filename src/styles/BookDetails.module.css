@@ -5,16 +5,34 @@
 }
 
 .resimg img {
-  width: 200px;
+  width: 300px;
   height: auto;
   margin-right: 20px;
 }
-
+.resimg img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+/* .starhover:hover {
+  transform: translateY(-5px);
+} */
 .resimg p {
   margin: 0;
   font-size: 40px;
   font-weight: bold;
   display: block;
+}
+.ratingspan {
+  font-size: 1.8rem;
+  padding: 1rem;
+  font-weight: normal;
+}
+.categorynamespan {
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+.categorynamespan:hover {
+  text-decoration: underline;
 }
 .resimg div {
   display: flex;
@@ -55,7 +73,8 @@
   }
 
   .resimg img {
-    width: 100%;
+    width: 70%;
+    height: auto;
     margin-right: 0;
     margin-bottom: 20px;
   }
@@ -66,6 +85,14 @@
 
   .resimg p {
     font-size: 2rem;
+    margin-left: 30%;
+  }
+  .categorynamespan {
+    margin-left: 39%;
+    font-size: 1.5rem;
+  }
+  .starhover {
+    padding-left: 5%;
   }
 }
 
@@ -75,11 +102,27 @@
   }
 
   .resimg p {
-    margin: 0;
+    margin-left: 19%;
+    margin-top: 1.5%;
     font-size: 1.5rem;
     font-weight: bold;
   }
-
+  .categorynamespan {
+    margin-left: 29%;
+    font-size: 1.5rem;
+  }
+  .starhover {
+    padding-left: 9.8%;
+  }
+  .starhover .ratingspan {
+    font-size: 1.4rem;
+    padding-bottom: 1.5rem;
+  }
+  .resimg img {
+    width: 300px;
+    height: auto;
+    margin-right: 20px;
+  }
   .descContainer {
     width: 100%;
     padding: 5px;

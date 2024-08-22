@@ -3,6 +3,7 @@ import styles from "../styles/BookList.module.css";
 import { Link } from "react-router-dom";
 import Homeheader from "./Homeheader";
 import Homefooter from "./Homefooter";
+import generateStars from "./stargenerate";
 
 function BooksList() {
   const [books, setBooks] = useState([]);
@@ -45,6 +46,7 @@ function BooksList() {
               <Link to={`/books/${book._id}`} className="no-decoration">
                 <img src={book.image}></img>
                 <h2>{book.title}</h2>
+                <p>{book.rating ? generateStars(book.rating) : ""}</p>
               </Link>
             </div>
           </div>
