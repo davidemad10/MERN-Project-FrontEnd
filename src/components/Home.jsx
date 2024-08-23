@@ -14,7 +14,7 @@ function Home() {
 
   return (
     <>
-      <div className="container-fluid" style={{ padding: "0", margin: "0" }}>
+      <div className="container-fluid">
         <Homeheader sendData={handleDataFromChildA} />
         <Slider />
         {sharedData ? <Search data={sharedData} /> : <Homebody />}

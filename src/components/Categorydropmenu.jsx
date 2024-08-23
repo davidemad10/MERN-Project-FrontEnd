@@ -1,23 +1,30 @@
+import { useState, useEffect } from 'react';
+import fetchAndProcessCategories from './AdminPanelTableComponents/GetCategories';
 
-function Categorydropmenu() {
-    const categories = [
-        { label: 'action' },
-        { label: 'Sci-Fi' },
-        { label: 'Drama' },
-        { label: 'AA77AA' },
-    ]
+function CategoryDropdownMenu() {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const loadCategories = async () => {
+            const categoriesData = await fetchAndProcessCategories();
+            setCategories(categoriesData.map(name => ({ label: name })));
+        };
+        loadCategories();
+    }, []);
 
     return (
         <>
-            <select class="form-control mb-3 mt-1" id="exampleFormControlSelect1">
+            <select className="form-control mb-3 mt-1" id="exampleFormControlSelect1">
                 {
                     categories.map((category, index) =>
-                        <option>{category.label}</option>
+                        <option key={index} value={category.label}>
+                            {category.label}
+                        </option>
                     )
                 }
             </select>
         </>
-    )
+    );
 }
 
-export default Categorydropmenu;
+export default CategoryDropdownMenu;

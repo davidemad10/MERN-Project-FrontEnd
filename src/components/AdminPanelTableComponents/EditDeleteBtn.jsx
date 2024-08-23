@@ -1,4 +1,3 @@
-// import EditDeleteCard from "./EditCard";
 import DeleteRecord from './DeleteRecord';
 import { APContext } from './AdminPanel';
 import AdminLogin from "./AdminLogin";
@@ -9,8 +8,12 @@ function EditDeleteBtn({ recordId, activeTab }) {
         const isConfirmed = window.confirm("Are you sure you want to delete this record?");
         if (isConfirmed) {
             const result = await DeleteRecord(recordId, activeTab);
-            if(!result){
-                setContent(<AdminLogin/>)
+            if (!result) {
+                window.location.reload()
+            }
+            else {
+                console.log("Record has been deleted")
+                // window.location.reload()
             }
         }
         else {

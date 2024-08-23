@@ -9,14 +9,15 @@ function AdminLogin({ setJwt }) {
     const passwordRef = useRef('');
     const navigate = useNavigate(); 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        Login(emailRef.current.value, passwordRef.current.value, setJwt)
+        await Login(emailRef.current.value, passwordRef.current.value, setJwt)
+        return window.location.reload()
     }
 
-    useEffect(() => {
-        localStorage.clear();
-    }, [])
+    // useEffect(() => {
+    //     localStorage.clear();
+    // }, [])
 
     return (
 
