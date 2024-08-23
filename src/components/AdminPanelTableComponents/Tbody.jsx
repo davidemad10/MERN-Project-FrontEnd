@@ -23,7 +23,7 @@ function Tbody({ header }) {
                                     {record[field] || ""}
                             </td>
                         ))}
-                        <EditDeleteBtn recordId={record._id} activeTab={activeTab} />
+                        <EditDeleteBtn recordId={record._id} activeTab={activeTab} record={record}/>
                     </tr>
                 ))}
                 {activeTab === "authors" && data && data.length > 0 && data.map((record, index) => (
@@ -33,7 +33,7 @@ function Tbody({ header }) {
                                 {record[field] || ""}
                             </td>
                         ))}
-                        <EditDeleteBtn recordId={record._id} activeTab={activeTab} />
+                        <EditDeleteBtn recordId={record._id} activeTab={activeTab} record={record}/>
                     </tr>
                 ))}
                 {activeTab === "categories" && data && data.length > 0 && data.map((record, index) => (
@@ -43,7 +43,7 @@ function Tbody({ header }) {
                                 {record[field] || ""}
                             </td>
                         ))}
-                        <EditDeleteBtn recordId={record._id} activeTab={activeTab} />
+                        <EditDeleteBtn recordId={record._id} activeTab={activeTab} record={record}/>
                     </tr>
                 ))}
             </tbody>

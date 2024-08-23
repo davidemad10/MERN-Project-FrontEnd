@@ -5,13 +5,13 @@ import checker from './AdminPanelTableComponents/checker';
 
 function Admin() {
   const storedjwt = localStorage.getItem('jwt');
-  console.log("jwt from Admin: ", storedjwt)
+  // console.log("jwt from Admin: ", storedjwt)
   const [jwt, setJwt] = useState(storedjwt);
-  console.log("jwt from Admin: ", jwt)
+  // console.log("jwt from Admin: ", jwt)
   const [isValid, setIsValid] = useState(false);
   const validateToken = async () => {
     const result = await checker();
-    console.log(result)
+    // console.log(result)
     if (result.valid) {
       setIsValid(true);
     } else {

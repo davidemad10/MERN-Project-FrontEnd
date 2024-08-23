@@ -5,7 +5,7 @@ import Tbody from './Tbody';
 
 function Table() {
   const Books = ["title", "image", "desc", "categoryId", "authorId"];
-  const Authors = ["firstName", "lastName", "photo"];
+  const Authors = ["firstName", "lastName", "disc","image"];
   const Categories = ["categoryName", "image"];
   
   const { activeTab } = APContext();
