@@ -71,6 +71,10 @@ function AddAuthor() {
         })
             .then(response => response.json())
             .then(data => {
+                if(data.errorMessage === "invalid token"){
+                    alert("This session is Expired\nYou will be redirected to login page")
+                    window.location.reload()
+                }
                 console.log("Author added:", data);
                 if (data.status === 'success') {
                     // Show success alert and reload page
@@ -96,6 +100,7 @@ function AddAuthor() {
                     id="firstName"
                     ref={firstNameRef}
                     onChange={(e) => setFirstName(e.target.value)}
+                    required
                 />
                 <label htmlFor="lastName">Last Name:</label>
                 <input
@@ -104,6 +109,7 @@ function AddAuthor() {
                     id="lastName"
                     ref={lastNameRef}
                     onChange={(e) => setLastName(e.target.value)}
+                    required
                 />
                 <label htmlFor="dateOfBirth">Date of Birth:</label>
                 <input
@@ -126,6 +132,7 @@ function AddAuthor() {
                     className="form-control mb-3 mt-1"
                     id="authorImage"
                     ref={imageRef}
+                    required
                 />
                 <div>
                     <button className="btn btn-dark mt-4 px-5" type="submit">Add Author</button>

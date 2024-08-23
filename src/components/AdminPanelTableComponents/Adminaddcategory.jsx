@@ -53,6 +53,7 @@ function AddCategory() {
                     id="categoryName"
                     ref={categoryNameRef}
                     onChange={(e) => setCategoryName(e.target.value)}
+                    required
                 />
                 <label htmlFor="categoryImage">Category Image:</label>
                 <input
@@ -60,6 +61,7 @@ function AddCategory() {
                     className="form-control mb-3 mt-1"
                     id="categoryImage"
                     ref={imageRef}
+                    required
                 />
                 <div>
                     <button className="btn btn-dark mt-4 px-5" type="submit">Add Category</button>

@@ -57,6 +57,7 @@ function AddBook() {
                     className="form-control mb-3 mt-1"
                     id="title"
                     ref={titleRef}
+                    required
                 />
                 <label htmlFor="desc">Desc:</label>
                 <input
@@ -64,6 +65,7 @@ function AddBook() {
                     className="form-control mb-3 mt-1"
                     id="desc"
                     ref={descRef}
+                    required
                 />
                 <label htmlFor="categoryId">Category ID:</label>
                 <input
@@ -72,6 +74,7 @@ function AddBook() {
                     id="categoryId"
                     value={categoryId}
                     onChange={(e) => setCategoryId(e.target.value)}
+                    required
                 />
                 <label htmlFor="authorId">Author ID:</label>
                 <input
@@ -80,6 +83,7 @@ function AddBook() {
                     id="authorId"
                     value={authorId}
                     onChange={(e) => setAuthorId(e.target.value)}
+                    required
                 />
                 <label htmlFor="image">Image:</label>
                 <input
@@ -87,6 +91,7 @@ function AddBook() {
                     className="form-control mb-3 mt-1"
                     id="image"
                     ref={imageRef}
+                    required
                 />
                 <label htmlFor="rating">Rating:</label>
                 <input
@@ -95,6 +100,7 @@ function AddBook() {
                     id="rating"
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}
+                    // required
                 />
                 <div>
                     <button className="btn btn-dark mt-4 px-5" type="submit">Add Book</button>

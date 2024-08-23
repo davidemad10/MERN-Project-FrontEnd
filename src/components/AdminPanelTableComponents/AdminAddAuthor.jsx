@@ -59,7 +59,7 @@ function AddAuthor() {
         <label htmlFor="firstName">First Name:</label>
         <input
           type="text"
-          className="form-control mb-3 mt-1"
+          className="form-control mb-3 mt-1 required"
           id="firstName"
           ref={firstNameRef}
           onChange={(e) => setFirstName(e.target.value)}
