@@ -1,28 +1,4 @@
 
-// async function checker() {
-//     const url = `http://localhost:5000/admin/checker`
-//     try {
-//         const res = await fetch(url,
-//             {
-//                 method: "GET",
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                     "authorization": localStorage.getItem('jwt')
-//                 }
-//             }
-
-//         )
-//         if (res.status === 201) {
-//             const data = await res.json()
-//             return data
-//         }
-//     }
-//     catch (err) {
-//         console.log("Error: ", err)
-//     }
-// }
-
-// export default checker;
 async function checker() {
     const url = `http://localhost:5000/admin/checker`;
     try {
@@ -30,7 +6,7 @@ async function checker() {
         if (!token) {
             return { valid: false, message: "No token" };
         }
-
+            // console.log("token from checker: ",token)
         const res = await fetch(url, {
             method: "GET",
             headers: {
