@@ -46,7 +46,7 @@ const Signup = () => {
           <h1>Welcome Back</h1>
           <Link to="/users/login">
             <button type="button" className={styles.white_btn}>
-              Sing in
+              Login
             </button>
           </Link>
         </div>
@@ -91,7 +91,7 @@ const Signup = () => {
             />
             {error && <div className={styles.error_msg}>{error}</div>}
             <button type="submit" className={styles.green_btn}>
-              Sing Up
+              Register
             </button>
           </form>
         </div>

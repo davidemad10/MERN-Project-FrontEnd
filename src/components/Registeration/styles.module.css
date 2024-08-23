@@ -1,19 +1,11 @@
-body {
-    background-image: url("../../../../background-image.jpg"); /* Add your background image path */
-    background-size: cover; /* Ensures the image covers the entire body */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-attachment: fixed; /* Keeps the image fixed when scrolling */
-    margin: 0;
-    padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
 
 .signup_container {
 	width: 100%;
 	min-height: 100vh;
-	/* background-color: #f5f5f5; */
+	background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url("https://trumpwallpapers.com/wp-content/uploads/Book-Wallpaper-19-1920-x-1200.jpg");
+	background-size: cover; /* Make the background image cover the entire page */
+	background-repeat: no-repeat; /* Prevent the image from repeating */
+	background-position: center; /* Center the image on the page */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -24,8 +16,8 @@ body {
 	height: 500px;
 	display: flex;
 	border-radius: 10px;
-	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
-		0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+	box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.1),
+		0px 3px 4px 0px rgba(0, 0, 0, 0.1), 0px 1px 8px 0px rgba(0, 0, 0, 0.1);
 }
 
 .left {
@@ -34,26 +26,26 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: #534428;
+	background-color: rgba(255, 241, 226, 0.7); /* Light, semi-transparent white */
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
 }
 
-.link{
-    color: #000000;
-    font-size: 25px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: transparent !important;
-    text-decoration: none;
+.left h1 {
+	margin-top: 0;
+	color: #ffffff; /* Light gray */
+	font-size: 40px;
+	align-self: center;
+	margin: 15px 0px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.left h1 {
-	margin : 25px 15px;
-	color: white;
-	font-size: 35px;
-	align-self: center;
-    background-color: transparent ;
-
+.link{
+	color: #4b3b27; 
+	font-size: 27px;
+	font-family: 'Courier New', Courier, monospace;
+	background-color: transparent;
+	text-decoration: none;
 }
 
 .right {
@@ -62,7 +54,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: white;
+	background-color: rgba(151, 127, 102, 0.7); /* Light, semi-transparent white */
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
@@ -75,7 +67,8 @@ body {
 
 .form_container h1 {
 	font-size: 40px;
-	margin-top: 0;
+	color: #d8cab8; /* Light gray */
+	margin: 25px;
 }
 
 .input {
@@ -84,8 +77,8 @@ body {
 	width: 370px;
 	padding: 15px;
 	border-radius: 10px;
-	background-color: #e0e0e0;
-	margin: 5px 0;
+	background-color: #ddd5c9; /* Very light gray */
+	margin: 10px 0;
 	font-size: 14px;
 }
 
@@ -94,7 +87,7 @@ body {
 	padding: 15px;
 	margin: 5px 0;
 	font-size: 14px;
-	background-color: #f34646;
+	background-color: rgba(255, 77, 77, 0.7); /* Light red with lower opacity */
 	color: white;
 	border-radius: 5px;
 	text-align: center;
@@ -105,17 +98,19 @@ body {
 	border: none;
 	outline: none;
 	padding: 12px 0;
-	background-color: white;
+	background-color: #493603; /* Very light gray */
 	border-radius: 20px;
-	width: 180px;
+	width: 160px;
+	color: #d8cab8;
 	font-weight: bold;
 	font-size: 14px;
 	cursor: pointer;
 }
 
 .green_btn {
-	background-color: #534428;
-	color: white;
+	background-color: #493603; /* Light gray */
+	color: #d8cab8; /* Very light gray */
 	margin: 10px;
+	margin-top: 30px;
 }
 
