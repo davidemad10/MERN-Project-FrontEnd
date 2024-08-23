@@ -61,16 +61,16 @@ const Login = () => {
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sing In
+							Login
 						</button>
 					</form>
 				</div>
         <div className={styles.right}>
           <h6><Link to="/" className={styles.link}>Good Reads</Link></h6>
-          <h1>Welcome Back</h1>
+          <h1>New Here !</h1>
           <Link to="/users/register">
             <button type="button" className={styles.white_btn}>
-              Sing in
+              Register
             </button>
           </Link>
         </div>
