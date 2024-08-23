@@ -1,69 +1,91 @@
 import '../../styles/Adminaddbook.css';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
-function AddBook() {
-    const titleRef = useRef('');
-    const descRef = useRef('');
-    const imageRef = useRef(null); // for file upload
+function Editbook({ record }) {
+    const [title, setTitle] = useState('');
+    const [desc, setDesc] = useState('');
     const [categoryId, setCategoryId] = useState('');
     const [authorId, setAuthorId] = useState('');
     const [rating, setRating] = useState('');
+    const imageRef = useRef(null); // For file upload
+
+    // Initialize the form fields with the record values
+    useEffect(() => {
+        if (record) {
+            setTitle(record.title || '');
+            setDesc(record.desc || '');
+            setCategoryId(record.categoryId || '');
+            setAuthorId(record.authorId || '');
+            setRating(record.rating || '');
+        }
+    }, [record]);
+
 
     function handleBook(e) {
         e.preventDefault();
 
-        const formData = new FormData();
-        formData.append('title', titleRef.current.value);
-        formData.append('image', imageRef.current.files[0]); // Assuming the image is uploaded
-        formData.append('desc', descRef.current.value);
-        formData.append('categoryId', categoryId);
-        formData.append('authorId', authorId);
-        formData.append('rating', rating);
+        const updateData = {
+            title,
+            desc,
+            categoryId,
+            authorId,
+            rating
+        };
 
-        fetch('http://localhost:5000/books', {
-            method: 'POST',
+        if (imageRef.current && imageRef.current.files.length > 0) {
+            updateData.image = imageRef.current.files[0].name; 
+        }
+
+        fetch(`http://localhost:5000/books/${record._id}`, {
+            method: 'PATCH',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('jwt')}`, // Include JWT
+                'Content-Type': 'application/json', 
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`, 
             },
-            body: formData, // Sending form data
-        })  
+            body: JSON.stringify(updateData), 
+        })
             .then(response => response.json())
             .then(data => {
                 if(data.errorMessage === "invalid token"){
                     alert("This session is Expired\nYou will be redirected to login page")
                     window.location.reload()
                 }
-                console.log("Book added:", data);
-                                
-                if (data.status === 'Success') {
-                    // Show success alert and reload page
-                    alert("The new Book has been added successfully");
+                console.log("Book updated:", data);
+                if (data.status === 'success') {
+                    alert("The book has been updated successfully");
                     handleCancel();
                 }
             })
             .catch(err => console.error("Error:", err));
     }
+
+
+
+
+
     function handleCancel() {
-        window.location.reload(); // Reload the current page
+        window.location.reload(); 
     }
 
     return (
         <div className="shadow rounded p-4 position-absolute w-50 top-50 start-50 translate-middle addbookCard">
-            <h2 className="text-center">Add Book</h2>
+            <h2 className="text-center">Edit Book</h2>
             <form onSubmit={handleBook}>
                 <label htmlFor="title">Book Title:</label>
                 <input
                     type="text"
                     className="form-control mb-3 mt-1"
                     id="title"
-                    ref={titleRef}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
                 <label htmlFor="desc">Desc:</label>
                 <input
                     type="text"
                     className="form-control mb-3 mt-1"
                     id="desc"
-                    ref={descRef}
+                    value={desc}
+                    onChange={(e) => setDesc(e.target.value)}
                 />
                 <label htmlFor="categoryId">Category ID:</label>
                 <input
@@ -97,7 +119,7 @@ function AddBook() {
                     onChange={(e) => setRating(e.target.value)}
                 />
                 <div>
-                    <button className="btn btn-dark mt-4 px-5" type="submit">Add Book</button>
+                    <button className="btn btn-dark mt-4 px-5" type="submit">Update Book</button>
                     <button className="btn btn-secondary ms-2 mt-4 px-5" onClick={handleCancel} type="button">Cancel</button>
                 </div>
             </form>
@@ -105,4 +127,4 @@ function AddBook() {
     );
 }
 
-export default AddBook;
+export default Editbook;

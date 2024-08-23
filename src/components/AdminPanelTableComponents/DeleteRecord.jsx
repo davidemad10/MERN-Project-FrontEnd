@@ -14,6 +14,10 @@ function DeleteRecord(recordId, activeTab) {
         body: JSON.stringify({ __id: recordId }) 
     })
         .then(response => {
+            if(data.errorMessage === "invalid token"){
+                alert("This session is Expired\nYou will be redirected to login page")
+                window.location.reload()
+            }
             if (!response.ok) {
                 alert("Invalid or missing token. Please log in again.\nRedirect into login page..");
                 return false
