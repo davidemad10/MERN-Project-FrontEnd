@@ -1,122 +1,121 @@
 .book_list {
-    margin-top: 4rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-    background: #f5f5f5; /* Light background to contrast with cards */
-  }
-  
-  .row {
-    flex: 1 1 calc(25% - 20px); /* Adjusted for optimal card size */
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .row:hover {
-    transform: scale(1.02); /* Slight zoom effect */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
-  }
-  
-  .card {
-    background-color: #ffffff; /* Clean white background */
-    border-radius: 15px; /* Rounded corners */
-    overflow: hidden;
-    text-align: center;
-    padding: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative; /* Position relative for pseudo-elements */
-  }
-  
-  .card img {
-    max-width: 100%;
-    height: 250px; /* Balanced height */
-    object-fit: cover;
-    border-radius: 10px; /* Rounded corners */
-    transition: transform 0.3s ease;
-  }
-  
-  .card img:hover {
-    transform: scale(1.1); /* Larger zoom effect */
-  }
-  
-  .card h2 {
-    margin-top: 10px;
-    font-size: 20px;
-    color: #2c3e50;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-  
-  .card h2:hover {
-    color: #2980b9;
-    text-decoration: underline;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
-  }
-  
-.card p{
-    font-size: small;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  background: #f5f5f5;
 }
 
-  /* Responsive styles */
-  @media (max-width: 1024px) {
-    .row {
-      flex: 1 1 calc(30% - 10px);
-      max-width: calc(48% - 10px);
-    }
+.row {
+  flex: 1 1 calc(25% - 20px);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.row:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.card img {
+  max-width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.1);
+}
+
+.card h2 {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #2c3e50;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.card h2:hover {
+  color: #2980b9;
+  text-decoration: underline;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card p {
+  font-size: small;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .row {
+    flex: 1 1 calc(30% - 10px);
+    max-width: calc(48% - 10px);
   }
-  
-  @media (max-width: 768px) {
-    .row {
-      flex: 1 1 calc(40% - 10px);
-      max-width: calc(98% - 10px);
-    }
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex: 1 1 calc(40% - 10px);
+    max-width: calc(98% - 10px);
   }
-  
-  @media (max-width: 480px) {
-    .row {
-      flex: 1 1 calc(50% - 10px);
-      max-width: calc(98% - 10px);
-    }
-    .card {
-      padding: 12px;
-    }
-  
-    .card h3 {
-      font-size: 16px;
-    }
+}
+
+@media (max-width: 480px) {
+  .row {
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(98% - 10px);
   }
-  
-  @media (max-width: 420px) {
-    .row {
-      flex: 1 1 calc(60% - 10px);
-      max-width: calc(98% - 10px);
-    }
-    .card {
-      padding: 12px;
-    }
-  
-    .card h3 {
-      font-size: 16px;
-    }
+  .card {
+    padding: 12px;
   }
-  
-  @media (max-width: 225px) {
-    .row {
-      flex: 1 1 calc(60% - 10px);
-      max-width: calc(98% - 10px);
-      min-width: 170px;
-    }
-    .card {
-      padding: 12px;
-    }
-  
-    .card h3 {
-      font-size: 16px;
-    }
+
+  .card h3 {
+    font-size: 16px;
   }
-  
+}
+
+@media (max-width: 420px) {
+  .row {
+    flex: 1 1 calc(60% - 10px);
+    max-width: calc(98% - 10px);
+  }
+  .card {
+    padding: 12px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 225px) {
+  .row {
+    flex: 1 1 calc(60% - 10px);
+    max-width: calc(98% - 10px);
+    min-width: 170px;
+  }
+  .card {
+    padding: 12px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+}

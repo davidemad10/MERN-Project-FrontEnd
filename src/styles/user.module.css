@@ -1,21 +1,18 @@
-/* Container */
 .container {
   max-width: 60%;
   margin: 5% auto;
   padding: 3%;
-  background-color: #ffffff; /* White background */
+  background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Default shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: box-shadow 0.3s; /* Smooth shadow transition */
+  transition: box-shadow 0.3s;
 }
 
-/* Hover Effect */
 .container:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
-/* Header */
 .header {
   font-size: 28px;
   font-weight: 700;
@@ -23,12 +20,10 @@
   color: #333;
 }
 
-/* Messages */
 .messages {
   margin-bottom: 20px;
 }
 
-/* Success Message */
 .successMessage {
   color: #27ae60;
   font-size: 20px;
@@ -36,7 +31,6 @@
   font-weight: 500;
 }
 
-/* Error Message */
 .errorMessage {
   color: #e74c3c;
   font-size: 20px;
@@ -52,7 +46,6 @@
   padding: 20px;
 }
 
-/* Label */
 .formLabel {
   display: block;
   margin-bottom: 8px;
@@ -61,7 +54,6 @@
   color: #555;
 }
 
-/* Input */
 .formInput {
   width: 75%;
   height: 55px;
@@ -80,7 +72,6 @@
   outline: none;
 }
 
-/* Button */
 .button {
   background-color: #4caf50;
   color: #fff;
@@ -105,7 +96,6 @@
   }
 }
 
-/* Set the background of the body to white */
 body {
-  background-color: #ffffff; /* White background */
+  background-color: #ffffff;
 }

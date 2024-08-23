@@ -19,7 +19,7 @@ function Author() {
         return response.json();
       })
       .then((data) => {
-        setAuthors(data.data.authors); // Updated to reflect author data
+        setAuthors(data.data.authors);
         setLoading(false);
       })
       .catch((error) => {
@@ -43,11 +43,10 @@ function Author() {
           <div className={styles.row} key={author._id}>
             <div className={styles.card}>
               <Link to={`/authors/${author._id}`} className="no-decoration">
-                <img
-                  src={author.image} // Assuming each author has an image property
-                  alt={author.firstName} // Use author's first name as alt text
-                ></img>
-                <h2>{author.firstName} {author.lastName}</h2>
+                <img src={author.image} alt={author.firstName}></img>
+                <h2>
+                  {author.firstName} {author.lastName}
+                </h2>
                 <p>{author.disc}</p>
               </Link>
             </div>

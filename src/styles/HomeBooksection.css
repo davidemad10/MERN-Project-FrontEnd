@@ -15,3 +15,51 @@
   text-decoration: none;
   color: black;
 }
+
+.bookcardimg,
+.searchedbookcard {
+  width: 160px;
+  height: 240px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.bookcardimg:hover {
+  transform: scale(1.01) translate(1%, 1%);
+  margin: 0rem 1rem;
+}
+
+.no-decoration {
+  text-decoration: none;
+  color: black;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .bookcardimg,
+  .searchedbookcard {
+    width: 140px;
+    height: 210px;
+  }
+
+  .bookcardimg:hover {
+    margin: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bookcardimg,
+  .searchedbookcard {
+    width: 120px;
+    height: 180px;
+  }
+
+  .bookcardimg:hover {
+    transform: scale(1.02) translate(0.5%, 0.5%);
+    margin: 0.3rem;
+  }
+
+  .no-decoration {
+    font-size: 14px;
+  }
+}
