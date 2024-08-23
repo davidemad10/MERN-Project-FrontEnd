@@ -46,7 +46,6 @@ function CategoriesDetails() {
   return (
     <>
       <Homeheader />
-      <Slider />
       <div className={bookListStyles.book_list}>
         {books.map((book) => (
           <div className={bookListStyles.row} key={book._id}>
