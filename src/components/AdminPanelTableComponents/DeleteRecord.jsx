@@ -1,7 +1,7 @@
 
 function DeleteRecord(recordId, activeTab) {
-    console.log(recordId)
-    console.log(activeTab)
+    // console.log(recordId)
+    // console.log(activeTab)
 
     const url = `http://localhost:5000/${activeTab}/${recordId}`;
     const jwt = localStorage.getItem('jwt'); 
@@ -19,7 +19,6 @@ function DeleteRecord(recordId, activeTab) {
                 return false
             }
             else {
-                alert("Record has been deleted")
                 return true
                 response.json()
             }

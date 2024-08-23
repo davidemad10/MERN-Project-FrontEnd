@@ -17,8 +17,12 @@ async function Login(email, password, setJwt) {
         }
 
         const data = await response.json();
+        // console.log("From Login: ", data)
+        localStorage.clear()
         localStorage.setItem('jwt', data.data.token)
+        // console.log("jwt set into localSt. from Login")
         setJwt(data.data.token)
+        // console.log("jwt state changed from Login to Admin")
     } catch (err) {
         alert('Email or Password is Wrong')
     }

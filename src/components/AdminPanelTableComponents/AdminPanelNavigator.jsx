@@ -49,7 +49,7 @@ function Navigator() {
                 className='pe-3' 
                 style={{ cursor: "pointer" }}
                 onClick={handlenewrecord}
-                >new record</a>
+                >add new record</a>
             </div>
 
         </>
