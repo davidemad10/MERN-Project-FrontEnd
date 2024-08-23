@@ -1,0 +1,17 @@
+.custom-table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  
+  .custom-table th, .custom-table td {
+    word-wrap: break-word;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .custom-cell {
+    max-width: 150px; /* Adjust based on your needs */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  

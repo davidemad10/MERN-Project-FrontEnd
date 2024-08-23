@@ -1,0 +1,16 @@
+
+#als{
+  background: #333333;
+  color: wheat  ;
+}
+
+#als:hover{
+  background: #1d1b1b;
+  color: white  ;
+}
+
+#als:active{
+  color: white !important;
+  box-shadow: 1px 1px 4px black !important;  
+  background: #1d1b1b !important;
+}
