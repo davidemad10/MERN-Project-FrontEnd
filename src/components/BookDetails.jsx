@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styles from "../styles/BookDetails.module.css";
 import { Link, useParams } from "react-router-dom";
 import Homeheader from "./Homeheader";
 import Homefooter from "./Homefooter";
 import generateStars from "./stargenerate";
 import useCategory from "../hook/useCategory";
+import useAuthor from "../hook/useAuthor";
+import { AuthContext } from "../context/Authcontext";
 
 function BooksDetails() {
   const { id } = useParams();
@@ -12,11 +14,19 @@ function BooksDetails() {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [reviewText, setReviewText] = useState("");
+  const [reviewing, setReviewing] = useState(false);
+  const { user, isLoggedIn } = useContext(AuthContext);
   const {
     category,
     loading: categoryLoading,
     error: categoryError,
   } = useCategory(book?.data?.Book?.categoryId);
+  const {
+    author,
+    loading: authorLoading,
+    error: authorError,
+  } = useAuthor(book?.data?.Book?.authorId);
 
   useEffect(() => {
     fetch(`${api_uri}/${id}`)
@@ -36,12 +46,58 @@ function BooksDetails() {
         setLoading(false);
       });
   }, [id]);
-  if (loading || categoryLoading) {
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+    if (isLoggedIn) {
+      setReviewing(true);
+      const review = {
+        reviewerName: `${user.firstName} ${user.lastName}` || "Anonymous",
+        comment: reviewText,
+        createdAt: new Date().toISOString(),
+        bookId: book.data.Book._id,
+      };
+
+      try {
+        const response = await fetch(`${api_uri}/${id}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+          body: JSON.stringify(review),
+        });
+
+        if (response.ok) {
+          const newReview = await response.json();
+          setBook((prevBook) => ({
+            ...prevBook,
+            data: {
+              ...prevBook.data,
+              Book: {
+                ...prevBook.data.Book,
+                reviews: [...prevBook.data.Book.reviews, newReview],
+              },
+            },
+          }));
+          setReviewText("");
+        } else {
+          console.error("Failed to submit review");
+        }
+      } catch (error) {
+        console.error("Error submitting review:", error);
+      } finally {
+        setReviewing(false);
+      }
+    } else {
+      alert("You must be logged in to submit a review.");
+    }
+  };
+  if (loading || categoryLoading || authorLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error || categoryError) {
-    return <p>Error: {error || categoryError}</p>;
+  if (error || categoryError || authorError) {
+    return <p>Error: {error || categoryError || authorError}</p>;
   }
 
   if (!book) {
@@ -58,6 +114,14 @@ function BooksDetails() {
         ></img>
         <div>
           <p> {book.data.Book.title}</p>
+          <Link
+            to={`/authors/${book.data.Book.authorId}`}
+            className="no-decoration"
+          >
+            <span className={styles.categorynamespan}>
+              {`${author.data.oneAuthor.firstName} ${author.data.oneAuthor.lastName}`}
+            </span>
+          </Link>
           <Link
             to={`/categories/${book.data.Book.categoryId}`}
             className="no-decoration"
@@ -102,6 +166,24 @@ function BooksDetails() {
         ) : (
           <p className={styles.reviewCard}>No reviews yet.</p>
         )}
+        {/* {isLoggedIn && ( */}
+        <form onSubmit={handleReviewSubmit} className={styles.reviewForm}>
+          <textarea
+            value={reviewText}
+            onChange={(e) => setReviewText(e.target.value)}
+            placeholder="Write your review here..."
+            required
+            className={styles.reviewTextarea}
+          />
+          <button
+            type="submit"
+            className={styles.submitButton}
+            disabled={reviewing}
+          >
+            {reviewing ? "Submitting..." : "Submit Review"}
+          </button>
+        </form>
+        {/* )} */}
       </div>
       <Homefooter />
     </>
