@@ -76,6 +76,111 @@
   color: #7f8c8d;
 }
 
+/* Dropdown container */
+.dropdown {
+  margin-top: 15px;
+  position: relative;
+  display: inline-block;
+  width: 30%;
+}
+
+.dropdownLabel {
+  font-weight: 600;
+  margin-right: 10px;
+  font-size: 1rem;
+  color: #2c3e50;
+  display: block;
+  transition: color 0.3s;
+}
+
+.dropdownSelect {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  appearance: none; /* Remove default dropdown arrow */
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dropdownSelect::after {
+  content: "\25BC";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 1rem;
+  color: #999;
+}
+
+.dropdownSelect:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dropdownSelect:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 5px 0;
+}
+
+.dropdown:hover .dropdownMenu {
+  display: block;
+}
+
+.dropdownMenuItem {
+  padding: 10px 14px;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdownMenuItem:last-child {
+  border-bottom: none;
+}
+
+.dropdownMenuItem:hover {
+  background-color: #f1f1f1;
+}
+
+@media screen and (max-width: 1024px) {
+  .dropdownSelect {
+    font-size: 1rem;
+    padding: 10px 14px;
+  }
+
+  .dropdownLabel {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .dropdownMenu {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+  }
+}
+
 .reviewsSection {
   margin-top: 3rem;
   padding: 3rem 5rem;
@@ -216,6 +321,24 @@
     padding: 10px;
     font-size: 1.1rem;
   }
+  .dropdownSelect {
+    font-size: 1rem;
+    padding: 10px 14px;
+  }
+
+  .dropdownLabel {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .dropdownMenu {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+  }
+  .dropdown {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -280,6 +403,17 @@
     margin-top: 0.5rem;
     border-left-width: 4px;
   }
+  .dropdownSelect {
+    padding: 10px 14px;
+  }
+
+  .dropdownLabel {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .dropdown {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -300,6 +434,13 @@
   .categorynamespan {
     font-size: 1.3rem;
     padding-left: 7.7rem;
+  }
+  .dropdownSelect {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  .dropdown {
+    width: 100%;
   }
 
   .reviewsSection {

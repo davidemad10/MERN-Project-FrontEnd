@@ -73,6 +73,17 @@ function BooksDetails() {
           <div className={styles.descContainer}>
             <span style={{ fontSize: "1rem" }}>{book.data.Book.desc}</span>
           </div>
+          {/* Dropdown Menu */}
+          <div className={styles.dropdown}>
+            <label htmlFor="book-options" className={styles.dropdownLabel}>
+              Shelve:
+            </label>
+            <select id="book-options" className={styles.dropdownSelect}>
+              <option value="wishlist">Want to read</option>
+              <option value="read">Mark as Read</option>
+              <option value="share">Reading</option>
+            </select>
+          </div>
         </div>
       </div>
 
