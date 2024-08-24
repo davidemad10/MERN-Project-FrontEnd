@@ -287,6 +287,61 @@
   width: 70%;
 }
 
+.reviewForm {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.reviewForm:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.reviewTextarea {
+  width: 100%;
+  height: 150px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 1.5rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.reviewTextarea:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.submitButton {
+  background: #4a90e2;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submitButton:hover {
+  background: #357abd;
+}
+
+.submitButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
 /* Responsive styles */
 @media screen and (max-width: 1024px) {
   .resimg {
@@ -361,7 +416,7 @@
   }
   .categorynamespan {
     font-size: 1.3rem;
-    padding-left: 10rem;
+    padding-left: 18rem;
   }
   .descContainer {
     padding: 5px;

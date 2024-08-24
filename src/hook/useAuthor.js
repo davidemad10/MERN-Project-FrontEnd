@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 
-const useCategory = (categoryId) => {
-  const api_uri = "http://localhost:5000/categories";
-  const [category, setCategory] = useState(null);
+const useAuthor = (authorId) => {
+  const api_uri = "http://localhost:5000/authors";
+  const [author, setAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!categoryId) return;
+    if (!authorId) return;
 
-    const fetchCategory = async () => {
+    const fetchAuthor = async () => {
       try {
-        const response = await fetch(`${api_uri}/${categoryId}`);
+        const response = await fetch(`${api_uri}/${authorId}`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setCategory(data);
+        setAuthor(data);
         console.log(data);
       } catch (err) {
         setError(err.message);
@@ -25,10 +25,10 @@ const useCategory = (categoryId) => {
       }
     };
 
-    fetchCategory();
-  }, [categoryId]);
+    fetchAuthor();
+  }, [authorId]);
 
-  return { category, loading, error };
+  return { author, loading, error };
 };
 
-export default useCategory;
+export default useAuthor;
