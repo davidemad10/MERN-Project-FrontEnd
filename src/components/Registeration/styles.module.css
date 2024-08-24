@@ -13,11 +13,19 @@
 
 .signup_form_container {
 	width: 900px;
-	height: 500px;
+	height: 550px;
 	display: flex;
 	border-radius: 10px;
 	box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.1),
 		0px 3px 4px 0px rgba(0, 0, 0, 0.1), 0px 1px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+.signup_form_container:hover {
+	transition: 0.5s;
+	width: 910px;
+	height: 560px;
+	display: flex;
+	box-shadow: 0px 15px 15px 9px rgba(0, 0, 0, 0.336)
 }
 
 .left {
@@ -82,6 +90,19 @@
 	font-size: 14px;
 }
 
+.input:hover {
+	transition: 0.3s ease-in-out;
+	box-shadow: 0px 4px 8px 0px rgba(187, 187, 187, 0.678);
+	background-color: #f1ebdb; /* Slightly darker shade for the input background */
+}
+
+.input:focus {
+	outline: none;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+	background-color: #d8ccaa; /* Even darker shade when focused */
+}
+
+
 .error_msg {
 	width: 370px;
 	padding: 15px;
@@ -114,3 +135,28 @@
 	margin-top: 30px;
 }
 
+
+
+.left:hover, .right:hover {
+	transition: 0.3s ease-in-out;
+	box-shadow: 0px 8px 16px 0px rgba(173, 173, 173, 0.575);
+}
+
+.white_btn:hover,
+.green_btn:hover {
+	transition: 0.3s ease-in-out;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+	background-color: #5e4703; /* Slightly darker shade for the button */
+	color: #f8f4e1; /* Lighter color on hover */
+}
+
+
+.success_msg {
+	color: green;
+	font-size: 16px;
+	margin-top: 10px;
+	background-color: rgba(211, 203, 156, 0.562);
+	padding: 5px;
+	border-radius: 5px;
+  }
+  
