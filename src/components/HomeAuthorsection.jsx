@@ -27,18 +27,16 @@ function HomeAuthorsection() {
   }, []);
   return (
     <>
-      <div className='pt-4 ps-5 mb-3'>
+      <div className='pt-4 ps-5'>
         <h6>Featured Author</h6>
-        <div className="d-flex w-100 flex-direction-row p-2 justify-content-center    booksection">
+        <div className="d-flex w-75 flex-direction-row p-2 justify-content-center    booksection">
           {authors.slice(0, 5).map((author, index) => (
             <div className="bookcard" key={index}>
-              <img className="ms-1 bookcardimg w-75"
-                src={author.image}
-              // src={author.photo.toLowerCase() == 'no photo' ? '' : author.photo}
-              // alt={author.photo.toLowerCase() == 'no photo' ? `${author.firstName} ${author.lastName}` : ''}
-              />
-              <p className="mt-2 w-75 text-center"><small>{author.firstName} {author.lastName}</small></p>
-              {/* <p>{author.disc}</p> */}
+              <Link to={`/authors/${author._id}`} className="no-decoration">
+              <img className="ms-1 bookcardimg"
+                src={author.image} />
+              <p className="mt-2 w-75"><small>{author.firstName} {author.lastName}</small></p>
+              </Link>
             </div>
           ))}
         </div>
