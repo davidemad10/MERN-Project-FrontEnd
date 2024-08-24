@@ -1,14 +1,23 @@
 import "../styles/Homeheader.css";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Homeheader({ sendData }) {
   const fontSize = { fontSize: "1.1rem" };
   const searchValue = useRef("");
+  const navigate = useNavigate();
 
-  function handleinput() {
+  const handleinput = () => {
     sendData(searchValue.current.value);
-  }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/users/login");
+  };
+
+  // Check if the token exists in local storage
+  const token = localStorage.getItem("token");
 
   return (
     <>
@@ -96,24 +105,38 @@ function Homeheader({ sendData }) {
               </button>
             </div>
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link
-                  to="/users/login"
-                  style={fontSize}
-                  className="nav-link link-dark"
-                >
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/users/register"
-                  style={fontSize}
-                  className="nav-link link-dark"
-                >
-                  Register
-                </Link>
-              </li>
+              {token ? (
+                <li className="nav-item">
+                  <button
+                    onClick={handleLogout}
+                    style={fontSize}
+                    className="nav-link link-dark"
+                  >
+                    Logout
+                  </button>
+                </li>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link
+                      to="/users/login"
+                      style={fontSize}
+                      className="nav-link link-dark"
+                    >
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      to="/users/register"
+                      style={fontSize}
+                      className="nav-link link-dark"
+                    >
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
