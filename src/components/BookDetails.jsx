@@ -46,6 +46,8 @@ function BooksDetails() {
         setLoading(false);
       });
   }, [id]);
+  const token = localStorage.getItem("token");
+
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
     if (isLoggedIn) {
@@ -75,7 +77,7 @@ function BooksDetails() {
               ...prevBook.data,
               Book: {
                 ...prevBook.data.Book,
-                reviews: [...prevBook.data.Book.reviews, newReview],
+                reviews: [...prevBook.data.user.books.reviews, newReview],
               },
             },
           }));
@@ -138,16 +140,18 @@ function BooksDetails() {
             <span style={{ fontSize: "1rem" }}>{book.data.Book.desc}</span>
           </div>
           {/* Dropdown Menu */}
-          <div className={styles.dropdown}>
-            <label htmlFor="book-options" className={styles.dropdownLabel}>
-              Shelve:
-            </label>
-            <select id="book-options" className={styles.dropdownSelect}>
-              <option value="wishlist">Want to read</option>
-              <option value="read">Mark as Read</option>
-              <option value="share">Reading</option>
-            </select>
-          </div>
+          {token && (
+            <div className={styles.dropdown}>
+              <label htmlFor="book-options" className={styles.dropdownLabel}>
+                Shelve:
+              </label>
+              <select id="book-options" className={styles.dropdownSelect}>
+                <option value="wishlist">Want to read</option>
+                <option value="read">Mark as Read</option>
+                <option value="share">Reading</option>
+              </select>
+            </div>
+          )}
         </div>
       </div>
 
@@ -166,24 +170,24 @@ function BooksDetails() {
         ) : (
           <p className={styles.reviewCard}>No reviews yet.</p>
         )}
-        {/* {isLoggedIn && ( */}
-        <form onSubmit={handleReviewSubmit} className={styles.reviewForm}>
-          <textarea
-            value={reviewText}
-            onChange={(e) => setReviewText(e.target.value)}
-            placeholder="Write your review here..."
-            required
-            className={styles.reviewTextarea}
-          />
-          <button
-            type="submit"
-            className={styles.submitButton}
-            disabled={reviewing}
-          >
-            {reviewing ? "Submitting..." : "Submit Review"}
-          </button>
-        </form>
-        {/* )} */}
+        {token && (
+          <form onSubmit={handleReviewSubmit} className={styles.reviewForm}>
+            <textarea
+              value={reviewText}
+              onChange={(e) => setReviewText(e.target.value)}
+              placeholder="Write your review here..."
+              required
+              className={styles.reviewTextarea}
+            />
+            <button
+              type="submit"
+              className={styles.submitButton}
+              disabled={reviewing}
+            >
+              {reviewing ? "Submitting..." : "Submit Review"}
+            </button>
+          </form>
+        )}
       </div>
       <Homefooter />
     </>
