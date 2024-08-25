@@ -10,10 +10,12 @@ const Signup = () => {
     lastName: "",
     email: "",
     password: "",
-    avatar: null, // For file upload
+    avatar: null,
   });
   const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState(""); // Added state for success message
+  const [passwordError, setPasswordError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
   const navigate = useNavigate();
 
   const handleChange = ({ currentTarget: input }) => {
@@ -21,11 +23,43 @@ const Signup = () => {
       setData({ ...data, avatar: input.files[0] });
     } else {
       setData({ ...data, [input.name]: input.value });
+
+      if (input.name === "password") {
+        validatePassword(input.value);
+      }
+    }
+  };
+
+  const validatePassword = (password) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (password.length < minLength) {
+      setPasswordError("Password must be at least 8 characters long.");
+    } else if (!hasUpperCase) {
+      setPasswordError("Password must contain at least one uppercase letter.");
+    } else if (!hasLowerCase) {
+      setPasswordError("Password must contain at least one lowercase letter.");
+    } else if (!hasNumber) {
+      setPasswordError("Password must contain at least one number.");
+    } else if (!hasSpecialChar) {
+      setPasswordError("Password must contain at least one special character.");
+    } else {
+      setPasswordError(""); // Clear error if password is strong
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Prevent form submission if there are errors
+    if (passwordError) {
+      return;
+    }
+
     const formData = new FormData();
     formData.append("firstName", data.firstName);
     formData.append("lastName", data.lastName);
@@ -41,11 +75,11 @@ const Signup = () => {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        withCredentials: true, // Make sure this is set to include credentials
+        withCredentials: true,
       });
 
-      localStorage.setItem("token", res.token); // Store JWT token in localStorage
-      setSuccessMessage("Registration successful! Redirecting..."); // Set success message
+      // localStorage.setItem("token", res.token);
+      setSuccessMessage("Registration successful! Redirecting...");
 
       // Delay navigation by 2 seconds
       setTimeout(() => {
@@ -59,7 +93,7 @@ const Signup = () => {
         error.response.status <= 500
       ) {
         setError(error.response.data.message);
-        console.log("error to send data to server");
+        console.log("Error sending data to server");
       }
     }
   };
@@ -112,23 +146,37 @@ const Signup = () => {
                 required
                 className={styles.input}
               />
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={handleChange}
-                value={data.password}
-                required
-                className={styles.input}
-              />
-              <input
+              <div className={styles.password_container}>
+                <input
+                  type={showPassword ? "text" : "password"} 
+                  placeholder="Password"
+                  name="password"
+                  onChange={handleChange}
+                  value={data.password}
+                  required
+                  className={styles.input}
+                />
+                <button
+                  type="button"
+                  className={styles.show_password_btn}
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "🙊" : "🙈"}
+                </button>
+              </div>
+              {passwordError && (
+                <div className={styles.error_msg}>{passwordError}</div>
+              )}
+              {/* <input
                 type="file"
                 name="avatar"
                 onChange={handleChange}
                 className={styles.input}
-              />
+              /> */}
               {error && <div className={styles.error_msg}>{error}</div>}
-              {successMessage && <div className={styles.success_msg}>{successMessage}</div>} {/* Success message */}
+              {successMessage && (
+                <div className={styles.success_msg}>{successMessage}</div>
+              )}
               <button type="submit" className={styles.green_btn}>
                 Register
               </button>

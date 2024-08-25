@@ -8,6 +8,7 @@ const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState(""); // New state for success message
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
   const navigate = useNavigate();
 
   const handleChange = ({ currentTarget: input }) => {
@@ -54,17 +55,28 @@ const Login = () => {
                 required
                 className={styles.input}
               />
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={handleChange}
-                value={data.password}
-                required
-                className={styles.input}
-              />
+              <div className={styles.password_container}>
+                <input
+                  type={showPassword ? "text" : "password"} // Toggle input type between password and text
+                  placeholder="Password"
+                  name="password"
+                  onChange={handleChange}
+                  value={data.password}
+                  required
+                  className={styles.input}
+                />
+                <button
+                  type="button"
+                  className={styles.show_password_btn}
+                  onClick={() => setShowPassword(!showPassword)} // Toggle password visibility
+                >
+                  {showPassword ? "🙊" : "🙈"}
+                </button>
+              </div>
               {error && <div className={styles.error_msg}>{error}</div>}
-              {successMessage && <div className={styles.success_msg}>{successMessage}</div>} {/* Show success message */}
+              {successMessage && (
+                <div className={styles.success_msg}>{successMessage}</div>
+              )}
               <button type="submit" className={styles.green_btn}>
                 Login
               </button>
