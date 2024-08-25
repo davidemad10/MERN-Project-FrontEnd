@@ -6,17 +6,32 @@ import Homefooter from "./Homefooter";
 import generateStars from "./stargenerate";
 import useCategory from "../hook/useCategory";
 import useAuthor from "../hook/useAuthor";
+import useUser from "../hook/useUser";
 import { AuthContext } from "../context/Authcontext";
+
+// Function to decode Base64Url
+function base64UrlDecode(base64Url) {
+  const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+  const decodedString = atob(base64);
+  return decodeURIComponent(
+    decodedString
+      .split("")
+      .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+      .join("")
+  );
+}
 
 function BooksDetails() {
   const { id } = useParams();
   const api_uri = "http://localhost:5000/books";
   const [book, setBook] = useState(null);
+  const [userq, setuserq] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reviewText, setReviewText] = useState("");
   const [reviewing, setReviewing] = useState(false);
   const { user, isLoggedIn } = useContext(AuthContext);
+
   const {
     category,
     loading: categoryLoading,
@@ -27,7 +42,25 @@ function BooksDetails() {
     loading: authorLoading,
     error: authorError,
   } = useAuthor(book?.data?.Book?.authorId);
+  const token = localStorage.getItem("token");
 
+  // Decode the JWT to extract the user ID
+  let userId = null;
+  if (token) {
+    try {
+      const [, payload] = token.split(".");
+      const decodedPayload = base64UrlDecode(payload);
+      const payloadData = JSON.parse(decodedPayload);
+      userId = payloadData._id;
+    } catch (error) {
+      console.error("Error decoding token:", error);
+    }
+  }
+  const {
+    user: userDetails,
+    loading: userLoading,
+    error: userError,
+  } = useUser(userId);
   useEffect(() => {
     fetch(`${api_uri}/${id}`)
       .then((res) => {
@@ -46,14 +79,15 @@ function BooksDetails() {
         setLoading(false);
       });
   }, [id]);
-  const token = localStorage.getItem("token");
 
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
-    if (isLoggedIn) {
+
+    if (token) {
       setReviewing(true);
+      const reviewerName = `${user.user.firstName} ${user.user.lastName}`;
       const review = {
-        reviewerName: `${user.firstName} ${user.lastName}` || "Anonymous",
+        reviewerName: reviewerName,
         comment: reviewText,
         createdAt: new Date().toISOString(),
         bookId: book.data.Book._id,
@@ -64,7 +98,7 @@ function BooksDetails() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(review),
         });
@@ -77,7 +111,7 @@ function BooksDetails() {
               ...prevBook.data,
               Book: {
                 ...prevBook.data.Book,
-                reviews: [...prevBook.data.user.books.reviews, newReview],
+                reviews: [...prevBook.data.Book.reviews, newReview.data],
               },
             },
           }));
@@ -108,6 +142,7 @@ function BooksDetails() {
   return (
     <>
       <Homeheader />
+
       <div className={styles.resimg}>
         <img
           src={book.data.Book.image}
@@ -159,7 +194,7 @@ function BooksDetails() {
         <h3>Reviews</h3>
         {book.data.Book.reviews && book.data.Book.reviews.length > 0 ? (
           book.data.Book.reviews.map((review) => (
-            <div key={review._id} className={styles.reviewCard}>
+            <div key={book.data.Book.reviews._id} className={styles.reviewCard}>
               <h4 className={styles.reviewerName}>{review.reviewerName}</h4>
               <p className={styles.reviewDate}>
                 {new Date(review.createdAt).toLocaleDateString()}
