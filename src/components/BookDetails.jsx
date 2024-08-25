@@ -104,17 +104,12 @@ function BooksDetails() {
         });
 
         if (response.ok) {
-          const newReview = await response.json();
-          setBook((prevBook) => ({
-            ...prevBook,
-            data: {
-              ...prevBook.data,
-              Book: {
-                ...prevBook.data.Book,
-                reviews: [...prevBook.data.Book.reviews, newReview.data],
-              },
-            },
-          }));
+          const newBookResponse = await fetch(`${api_uri}/${id}`);
+          if (!newBookResponse.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const newBookData = await newBookResponse.json();
+          setBook(newBookData);
           setReviewText("");
         } else {
           console.error("Failed to submit review");
@@ -194,10 +189,10 @@ function BooksDetails() {
         <h3>Reviews</h3>
         {book.data.Book.reviews && book.data.Book.reviews.length > 0 ? (
           book.data.Book.reviews.map((review) => (
-            <div key={book.data.Book.reviews._id} className={styles.reviewCard}>
+            <div key={review._id} className={styles.reviewCard}>
               <h4 className={styles.reviewerName}>{review.reviewerName}</h4>
               <p className={styles.reviewDate}>
-                {new Date(review.createdAt).toLocaleDateString()}
+                {new Date(review.createdAt).toLocaleString()}
               </p>
               <p className={styles.reviewComment}>{review.comment}</p>
             </div>
