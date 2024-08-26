@@ -11,3 +11,21 @@
   border: none;
   padding-left: 0.5rem;
 }
+
+.navbarC {
+  margin-left: 70px !important; 
+  margin-right: 50px !important;
+}
+
+.navbarC li{
+  border-radius: 30px;
+  padding: 5px;
+}
+.navbarC li:hover{
+  transition: 0.5s;
+  background-color: rgba(148, 143, 131, 0.13);
+  border-radius: 30px;
+}
+.searchBar{
+  margin-right: 60px  !important;
+}

@@ -22,7 +22,7 @@ function Homeheader({ sendData }) {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light mt-0 mb-0">
-        <div className="container-fluid">
+        <div className="container-fluid navbarC">
           <Link
             className="navbar-brand text-secondary"
             style={{
@@ -85,7 +85,7 @@ function Homeheader({ sendData }) {
               </li>
             </ul>
 
-            <div className="d-flex">
+            <div className="d-flex searchBar">
               <input
                 type="text"
                 style={{
@@ -106,15 +106,26 @@ function Homeheader({ sendData }) {
             </div>
             <ul className="navbar-nav">
               {token ? (
-                <li className="nav-item">
-                  <button
-                    onClick={handleLogout}
-                    style={fontSize}
-                    className="nav-link link-dark"
-                  >
-                    Logout
-                  </button>
-                </li>
+                <>
+                  <li className="nav-item">
+                    <Link
+                      to="/users/#"
+                      style={fontSize}
+                      className="nav-link link-dark"
+                    >
+                      My Books
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      onClick={handleLogout}
+                      style={fontSize}
+                      className="nav-link link-dark"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </>
               ) : (
                 <>
                   <li className="nav-item">

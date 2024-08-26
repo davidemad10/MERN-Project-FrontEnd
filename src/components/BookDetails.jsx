@@ -30,6 +30,7 @@ function BooksDetails() {
   const [error, setError] = useState(null);
   const [reviewText, setReviewText] = useState("");
   const [reviewing, setReviewing] = useState(false);
+  const [shelveValue, setshelveValue] = useState("want to read");
   const { user, isLoggedIn } = useContext(AuthContext);
 
   const {
@@ -80,6 +81,45 @@ function BooksDetails() {
       });
   }, [id]);
 
+  const handleUpdateShelve = async (e) => {
+    const selectedShelve = e.target.value;
+  
+    try {
+      // Log the book ID and user ID for debugging
+      console.log("Book ID:", book?.data?.Book._id);
+      console.log("User ID:", userId);
+  
+      const response = await fetch(
+        `http://localhost:5000/users/books/${book?.data?.Book._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            shelve: selectedShelve,
+            _id: userId,
+          }),
+        }
+      );
+  
+      if (!response.ok) {
+        // Log the response status and text for debugging
+        console.error("Response status:", response.status);
+        const errorText = await response.text();
+        console.error("Response text:", errorText);
+        throw new Error("Failed to update shelve status.");
+      }
+  
+      const result = await response.json();
+      console.log(result.successMessage); // Handle the success message
+      setshelveValue(selectedShelve); // Update the dropdown value
+    } catch (error) {
+      console.error("Error updating shelve:", error.message);
+    }
+  };
+  
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
 
@@ -175,10 +215,15 @@ function BooksDetails() {
               <label htmlFor="book-options" className={styles.dropdownLabel}>
                 Shelve:
               </label>
-              <select id="book-options" className={styles.dropdownSelect}>
-                <option value="wishlist">Want to read</option>
+              <select
+                id="book-options"
+                className={styles.dropdownSelect}
+                value={shelveValue}
+                onChange={handleUpdateShelve}
+              >
+                <option value="want to read">Want to read</option>
                 <option value="read">Mark as Read</option>
-                <option value="share">Reading</option>
+                <option value="reading">Reading</option>
               </select>
             </div>
           )}
