@@ -35,8 +35,9 @@ function Editbook({ record }) {
         if (imageRef.current && imageRef.current.files.length > 0) {
             updateData.image = imageRef.current.files[0].name; 
         }
-
-        fetch(`http://localhost:5000/books/${record._id}`, {
+        const url = `http://localhost:5000/books/${record._id}` 
+        console.log("URL: ", url)
+        fetch(url , {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json', 
@@ -50,6 +51,10 @@ function Editbook({ record }) {
                     alert("This session is Expired\nYou will be redirected to login page")
                     window.location.reload()
                 }
+                if (data.status === 'Fail' && data.message.includes('Cast to ObjectId failed')) {
+                    alert("Invalid Category ID or Author ID. Please enter valid IDs.");}
+                
+                
                 console.log("Book updated:", data);
                 if (data.status === 'success') {
                     alert("The book has been updated successfully");
@@ -58,9 +63,6 @@ function Editbook({ record }) {
             })
             .catch(err => console.error("Error:", err));
     }
-
-
-
 
 
     function handleCancel() {

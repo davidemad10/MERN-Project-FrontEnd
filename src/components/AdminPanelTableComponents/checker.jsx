@@ -1,5 +1,6 @@
 
 async function checker() {
+    // console.log("Checker is running\n")
     const url = `http://localhost:5000/admin/checker`;
     try {
         const token = localStorage.getItem('jwt');

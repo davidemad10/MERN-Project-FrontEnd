@@ -13,19 +13,20 @@ function Navigator() {
     }
 
     const handlenewrecord = () => {
-        setContent(<AddNewRecord/>)
+        setContent(<AddNewRecord />)
     }
 
     const { activeTab, onTabChange, setContent } = APContext();
 
     return (
         <>
-            <div className='d-flex'>
-                <ul className="nav nav-tabs col-sm-8 ms-5 mt-1">
+            <div className='d-flex px-3 dark' data-bs-theme="dark">
+                <ul className="nav nav-tabs col-sm-8 mt-1 w-100">
                     {navItems.map((item, index) => (
                         <li key={index} className="nav-item">
                             <a
                                 className={`nav-link ${item.label === activeTab ? 'active' : ''}`}
+                                style={{color: "darkgrey"}}    
                                 href={item.href}
                                 onClick={(e) => {
                                     e.preventDefault();
@@ -36,22 +37,23 @@ function Navigator() {
                             </a>
                         </li>
                     ))}
+                    <li className="nav-item ms-auto">
+                        <a
+                            className='m-auto nav-link'
+                            style={{ cursor: "pointer" , color: "black"}}
+                            href='/'
+                            onClick={handlelogout}
+                        >Logout</a>
+                    </li>
                 </ul>
-                <a
-                    className='m-auto'
-                    style={{ cursor: "pointer" }}
-                    href='/'
-                    onClick={handlelogout}
-                >Logout</a>
             </div>
-            <div className='d-flex justify-content-end w-100'>
-                <a 
-                className='pe-3' 
-                style={{ cursor: "pointer" }}
-                onClick={handlenewrecord}
+            <div className=' d-flex justify-content-end w-100 py-3' data-bs-theme="dark">
+                <a
+                    className='pe-3 nav-link'
+                    style={{ cursor: "pointer" }}
+                    onClick={handlenewrecord}
                 >add new record</a>
             </div>
-
         </>
     );
 }

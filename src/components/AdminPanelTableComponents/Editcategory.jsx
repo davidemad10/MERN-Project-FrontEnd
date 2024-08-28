@@ -30,15 +30,18 @@ function EditCategory({ record }) {
         fetch(`http://localhost:5000/categories/${record._id}`, {
             method: 'PATCH',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('jwt')}`, 
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
             },
             body: formData, // Sending form data
         })
             .then(response => response.json())
             .then(data => {
-                if(data.errorMessage === "invalid token"){
+                if (data.errorMessage === "invalid token") {
                     alert("This session is Expired\nYou will be redirected to login page")
                     window.location.reload()
+                }
+                if (data.errorMessage && data.errorMessage.includes("the categoryName must be at least 3 char")) {
+                    alert("The category name must be at least 3 characters long");
                 }
                 console.log("Category updated:", data);
                 if (data.status === 'Success') {
@@ -50,7 +53,7 @@ function EditCategory({ record }) {
     }
 
     function handleCancel() {
-        window.location.reload(); 
+        window.location.reload();
     }
 
     return (

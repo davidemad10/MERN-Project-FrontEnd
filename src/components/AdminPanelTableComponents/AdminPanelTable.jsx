@@ -20,7 +20,8 @@ function Table() {
 
   return (
     <>
-      <table className="table table-striped table-bordered custom-table">
+      {/* <table className="table table-striped table-bordered custom-table"> */}
+      <table className="table table-striped table-dark custom-table mb-0">
         <Thead header={headers} />
         <Tbody header={headers} />
       </table>

@@ -28,6 +28,10 @@ function AddCategory() {
                     alert("This session is Expired\nYou will be redirected to login page")
                     window.location.reload()
                 }
+                if (data.errorMessage && data.errorMessage.includes("the categoryName must be at least 3 char")) {
+                    alert("The category name must be at least 3 characters long");
+                }
+                
                 console.log("Category added:", data);
                 if (data.status === 'success') {
                     // Redirect to homepage or another page after success
@@ -43,7 +47,7 @@ function AddCategory() {
 
 
     return (
-        <div className="shadow rounded p-4 position-absolute w-50 top-50 start-50 translate-middle addcategoryCard">
+        <div className="shadow rounded p-4 position-absolute w-50 top-50 start-50 translate-middle addcategoryCard bg-light">
             <h2 className="text-center">Add Category</h2>
             <form onSubmit={handleCategory}>
                 <label htmlFor="categoryName">Category Name:</label>
@@ -60,10 +64,10 @@ function AddCategory() {
                     className="form-control mb-3 mt-1"
                     id="categoryImage"
                     ref={imageRef}
-                />
+                required />
                 <div>
-                    <button className="btn btn-dark mt-4 px-5" type="submit">Add Category</button>
-                    <button className="btn btn-secondary ms-2 mt-4 px-5" onClick={handleCancel} type="button">Cancel</button>
+                    <button className="btn btn-success mt-4 px-5" type="submit">Add Category</button>
+                    <button className="btn btn-dark ms-2 mt-4 px-5" onClick={handleCancel} type="button">Cancel</button>
                 </div>
             </form>
         </div>

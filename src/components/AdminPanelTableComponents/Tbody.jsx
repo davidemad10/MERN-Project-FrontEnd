@@ -15,7 +15,7 @@ function Tbody({ header }) {
                 {activeTab === "books" && data && data.length > 0 && data.map((record, index) => (
                     <tr key={index}>
                         {header.map((field) => (
-                            <td key={field} className="rounded custom-cell">
+                            <td key={field} className="custom-cell">
                                 {/* {(field === "categoryId" || field === "authorId") ? NameGetter(field, record._id)
                                     : record[field]}
                                 {(field === "categoryId" || field === "authorId") ? "a1a"
@@ -29,7 +29,7 @@ function Tbody({ header }) {
                 {activeTab === "authors" && data && data.length > 0 && data.map((record, index) => (
                     <tr key={index}>
                         {header.map((field) => (
-                            <td key={field} className="rounded custom-cell">
+                            <td key={field} className="custom-cell">
                                 {record[field] || ""}
                             </td>
                         ))}
@@ -39,7 +39,7 @@ function Tbody({ header }) {
                 {activeTab === "categories" && data && data.length > 0 && data.map((record, index) => (
                     <tr key={index}>
                         {header.map((field) => (
-                            <td key={field} className="rounded custom-cell">
+                            <td key={field} className="custom-cell">
                                 {record[field] || ""}
                             </td>
                         ))}

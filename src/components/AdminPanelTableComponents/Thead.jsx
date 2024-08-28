@@ -5,7 +5,7 @@ function Thead({header}) {
 
     return (
         <>
-            <thead>
+            <thead className="thead-dark">
                 <tr>
                     {activeTab === "books" && header.map((label, index) => (
                         <th key={index} scope="col" className="rounded">{label}</th>

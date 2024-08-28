@@ -1,7 +1,7 @@
 import { APContext } from './AdminPanel';
 import AddBook from './Adminaddbook';
 import AddCategory from './Adminaddcategory';
-import AddAuthor from './Adminaddauthor';
+import AddAuthor from './AdminAddAuthor';
 
 function AddNewRecord() {
     const { activeTab } = APContext();

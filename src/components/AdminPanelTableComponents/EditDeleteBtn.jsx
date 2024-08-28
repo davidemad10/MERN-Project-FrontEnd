@@ -43,7 +43,7 @@ function EditDeleteBtn({ recordId, activeTab, record }) {
     }
         return (
             <>
-                <td className="rounded custom-cell">
+                <td className="custom-cell">
                     <button onClick={handleEdit} className="btn btn-secondary mx-1 btn-sm">Edit</button>
                     <button onClick={handlDelete} className="btn btn-dark mx-1 btn-sm">Delete</button>
                 </td>

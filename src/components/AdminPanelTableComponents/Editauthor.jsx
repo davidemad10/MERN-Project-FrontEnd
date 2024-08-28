@@ -169,6 +169,8 @@ function EditAuthor({ record }) {
                     alert("This session is Expired\nYou will be redirected to login page")
                     window.location.reload()
                 }
+                if (data.status === 'Fail' && data.message.includes('Cast to ObjectId failed')) {
+                    alert("Invalid Category ID or Author ID. Please enter valid IDs.");}
                 if (data.status === 'success') {
                     // Handle image upload if necessary
                     if (imageFile) {

@@ -85,7 +85,7 @@ function Homeheader({ sendData }) {
               </li>
             </ul>
 
-            <div className="d-flex searchBar">
+            {/* <div className="d-flex searchBar">
               <input
                 type="text"
                 style={{
@@ -103,7 +103,7 @@ function Homeheader({ sendData }) {
               <button className="headersearchicon" onClick={handleinput}>
                 <i className="fa-solid fa-magnifying-glass"></i>
               </button>
-            </div>
+            </div> */}
             <ul className="navbar-nav">
               {token ? (
                 <>
