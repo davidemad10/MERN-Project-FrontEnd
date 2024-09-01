@@ -31,8 +31,6 @@ export const AuthProvider = ({ children }) => {
       }
     }
     if (token) {
-      // Decode token or fetch user data using the token
-      // setUser(userData);
       setIsLoggedIn(true);
     }
   }, []);
@@ -47,7 +45,7 @@ export const AuthProvider = ({ children }) => {
         throw new Error("Failed to fetch user data");
       }
       const userData = await response.json();
-      setUser(userData.data); // Assuming the data structure from the API
+      setUser(userData.data);
       setIsLoggedIn(true);
     } catch (error) {
       console.error("Error fetching user data:", error);

@@ -16,7 +16,7 @@ const useUser = (userId) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setUserq(data);
       } catch (err) {
         setError(err.message);

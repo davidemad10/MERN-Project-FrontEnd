@@ -17,7 +17,7 @@ const useCategory = (categoryId) => {
         }
         const data = await response.json();
         setCategory(data);
-        console.log(data);
+        // console.log(data);
       } catch (err) {
         setError(err.message);
       } finally {

@@ -71,7 +71,7 @@ function BooksDetails() {
         return res.json();
       })
       .then((data) => {
-        console.log("Fetched data:", data);
+        // console.log("Fetched data:", data);
         setBook(data);
         setLoading(false);
       })
@@ -83,12 +83,12 @@ function BooksDetails() {
 
   const handleUpdateShelve = async (e) => {
     const selectedShelve = e.target.value;
-  
+
     try {
       // Log the book ID and user ID for debugging
       console.log("Book ID:", book?.data?.Book._id);
       console.log("User ID:", userId);
-  
+
       const response = await fetch(
         `http://localhost:5000/users/books/${book?.data?.Book._id}`,
         {
@@ -103,7 +103,7 @@ function BooksDetails() {
           }),
         }
       );
-  
+
       if (!response.ok) {
         // Log the response status and text for debugging
         console.error("Response status:", response.status);
@@ -111,7 +111,7 @@ function BooksDetails() {
         console.error("Response text:", errorText);
         throw new Error("Failed to update shelve status.");
       }
-  
+
       const result = await response.json();
       console.log(result.successMessage); // Handle the success message
       setshelveValue(selectedShelve); // Update the dropdown value
@@ -119,7 +119,7 @@ function BooksDetails() {
       console.error("Error updating shelve:", error.message);
     }
   };
-  
+
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
 
