@@ -270,6 +270,25 @@
   cursor: not-allowed;
 }
 
+.favButton {
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.favAdded {
+  background-color: #c2185b; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: not-allowed; 
+}
+
+
 /* Responsive styles */
 @media screen and (max-width: 1024px) {
   .resimg {

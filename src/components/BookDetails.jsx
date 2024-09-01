@@ -30,6 +30,8 @@ function BooksDetails() {
   const [error, setError] = useState(null);
   const [reviewText, setReviewText] = useState("");
   const [reviewing, setReviewing] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [loadingFavorite, setLoadingFavorite] = useState(false);
   const [shelveValue, setshelveValue] = useState("want to read");
   const { user, isLoggedIn } = useContext(AuthContext);
 
@@ -80,6 +82,72 @@ function BooksDetails() {
         setLoading(false);
       });
   }, [id]);
+
+
+
+  const handleAddToFavorite = async () => {
+    if (isFavorite) return; 
+    
+    setLoadingFavorite(true);
+    try {
+      const response = await fetch(`http://localhost:5000/users/books/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          _id: userId,
+          bookId: book?.data?.Book?._id,
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorResponse = await response.text();
+        console.error("Error Response:", errorResponse);
+        throw new Error("Failed to add to favorite.");
+      }
+  
+      const result = await response.json();
+      console.log("Response Data:", result);
+  
+      if (result.books) {
+        const favoriteBook = result.books.find(
+          (book) => book.bookId === book?.data?.Book?._id
+        );
+        setIsFavorite(favoriteBook ? favoriteBook.isFavorite : true);
+      }
+    } catch (error) {
+      console.error("Error adding to favorite:", error.message);
+    } finally {
+      setLoadingFavorite(false);
+    }
+  };
+  
+
+  // const handleRemoveFromFavorite = async () => {
+  //   if (!isFavorite) return; // Prevent additional clicks if not a favorite
+  //   setLoadingFavorite(true);
+  //   try {
+  //     const response = await fetch(`http://localhost:5000/users/books/${id}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //       body: JSON.stringify({
+  //         _id: userId,
+  //         bookId: book?.data?.Book?._id,
+  //       }),
+  //     });
+  //   }
+  //   catch (error) {
+  //     console.error("Error removing from favorite:", error.message);
+  //   } finally {
+  //     setLoadingFavorite(false);
+  //   }
+  //   };
+
 
   const handleUpdateShelve = async (e) => {
     const selectedShelve = e.target.value;
@@ -212,11 +280,17 @@ function BooksDetails() {
 
           {token && (
             <div className={styles.favbtn}>
-              <button>Add to favorite</button>
-            </div>
-          )}
-        </div>
+            <button
+              onClick={handleAddToFavorite}
+              disabled={loadingFavorite || isFavorite}
+              className={isFavorite ? styles.favAdded : ""}
+            >
+              {isFavorite ? "Added to Favorite" : "Add to Favorite"}
+            </button>
+          </div>
+        )}
       </div>
+    </div>
 
       <div className={styles.reviewsSection}>
         <h3>Reviews</h3>

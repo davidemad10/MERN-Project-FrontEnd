@@ -1,0 +1,40 @@
+.myBooksContainer {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f4e1; /* Background color from your preferred palette */
+  }
+  
+  .booksTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .booksTable th,
+  .booksTable td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 1rem;
+    color: #543310; /* Text color from your preferred palette */
+  }
+  
+  .booksTable th {
+    background-color: #af8f6f; /* Header background color from your preferred palette */
+    color: #fff;
+  }
+  
+  .booksTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .shelveDropdown {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #74512d; /* Border color from your preferred palette */
+    background-color: #fff;
+  }
+  
