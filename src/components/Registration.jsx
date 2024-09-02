@@ -34,9 +34,8 @@ function Registration() {
       );
 
       if (response.status === 200) {
-        // Assuming the backend sends a JWT token on successful registration
         const { token } = response.data;
-        localStorage.setItem("token", token); // Store JWT token
+        localStorage.setItem("token", token);
         setSubmitted(true);
         setSuccess(
           `User ${user.firstName} ${user.lastName} successfully registered!`

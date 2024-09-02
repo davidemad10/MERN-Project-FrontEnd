@@ -11,7 +11,7 @@ function Author() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/authors")
+    fetch("https://goodreadfdm.vercel.app/authors")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -43,10 +43,7 @@ function Author() {
           <div className={styles.row} key={author._id}>
             <div className={styles.card}>
               <Link to={`/authors/${author._id}`} className="no-decoration">
-                <img
-                  src={author.image} // Assuming each author has an image property
-                  alt={author.firstName} // Use author's first name as alt text
-                ></img>
+                <img src={author.image} alt={author.firstName}></img>
                 <h2>
                   {author.firstName} {author.lastName}
                 </h2>

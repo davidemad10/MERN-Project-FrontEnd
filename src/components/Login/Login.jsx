@@ -18,7 +18,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:5000/users/login";
+      const url = "https://goodreadfdm.vercel.app/users/login";
       const response = await axios.post(url, data);
       localStorage.setItem("token", response.data.token);
 

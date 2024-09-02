@@ -10,7 +10,7 @@ import Slider from "./slider";
 
 function CategoriesDetails() {
   const { id } = useParams();
-  const api_uri = "http://localhost:5000/categories";
+  const api_uri = "https://goodreadfdm.vercel.app/categories";
   const [books, setBooks] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useCategory = (categoryId) => {
-  const api_uri = "http://localhost:5000/categories";
+  const api_uri = "https://goodreadfdm.vercel.app/categories";
   const [category, setCategory] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

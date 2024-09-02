@@ -36,11 +36,14 @@ export const AuthProvider = ({ children }) => {
   }, []);
   const fetchUserData = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:5000/users/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        `https://goodreadfdm.vercel.app/users/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch user data");
       }

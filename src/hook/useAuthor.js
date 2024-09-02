@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useAuthor = (authorId) => {
-  const api_uri = "http://localhost:5000/authors";
+  const api_uri = "https://goodreadfdm.vercel.app/authors";
   const [author, setAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

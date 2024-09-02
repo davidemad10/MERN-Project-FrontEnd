@@ -2,7 +2,7 @@
 //     const url = `http://localhost:5000/${activeTab}/${id}`;
 //     fetch(url,{
 //         method: "GET",
-//         headers: 
+//         headers:
 //         {"Content-Type": "application/json"},
 //     })
 //     .then((res)=>{
@@ -11,7 +11,7 @@
 //         }
 //     })
 //     .then((data)=>{
-//         const result = activeTab == "authors" ? `${data.data.oneAuthor.firstName} ${data.data.oneAuthor.lastName}` 
+//         const result = activeTab == "authors" ? `${data.data.oneAuthor.firstName} ${data.data.oneAuthor.lastName}`
 //         : data.data.Category.categoryName ;
 //         return result
 //     })
@@ -22,27 +22,27 @@
 
 // export default NameGetter;
 async function NameGetter(cat, id) {
-    const des = cat == "categoryId" ? "categories" : "authors";
-    const url = `http://localhost:5000/${des}/${id}`;
-    try {
-        const response = await fetch(url, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        if(!response.ok){
-            return "No ok";
-        }
-        const data = await response.json();
-        const result = des === "authors" 
-            ? `${data.data.oneAuthor.firstName} ${data.data.oneAuthor.lastName}` 
-            : data.data.Category.categoryName;
-        return result.length > 0 ? result : ""
+  const des = cat == "categoryId" ? "categories" : "authors";
+  const url = `https://goodreadfdm.vercel.app/${des}/${id}`;
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      return "No ok";
     }
-    catch{
-        return "not okkk"
-    }
+    const data = await response.json();
+    const result =
+      des === "authors"
+        ? `${data.data.oneAuthor.firstName} ${data.data.oneAuthor.lastName}`
+        : data.data.Category.categoryName;
+    return result.length > 0 ? result : "";
+  } catch {
+    return "not okkk";
+  }
 }
 
 export default NameGetter;

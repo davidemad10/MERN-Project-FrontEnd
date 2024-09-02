@@ -70,7 +70,7 @@ const Signup = () => {
     }
 
     try {
-      const url = "http://localhost:5000/users/register";
+      const url = "https://goodreadfdm.vercel.app/users/register";
       const { data: res } = await axios.post(url, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -85,7 +85,6 @@ const Signup = () => {
       setTimeout(() => {
         navigate("/users/login");
       }, 2000);
-
     } catch (error) {
       if (
         error.response &&
@@ -148,7 +147,7 @@ const Signup = () => {
               />
               <div className={styles.password_container}>
                 <input
-                  type={showPassword ? "text" : "password"} 
+                  type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   name="password"
                   onChange={handleChange}

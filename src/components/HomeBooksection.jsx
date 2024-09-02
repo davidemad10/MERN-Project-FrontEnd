@@ -6,7 +6,7 @@ function HomeBooksection() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/books")
+    fetch("https://goodreadfdm.vercel.app/books")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Something went wrong!");

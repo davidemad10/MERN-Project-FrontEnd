@@ -7,7 +7,6 @@ function Authordropmenu() {
   useEffect(() => {
     const loadAuthors = async () => {
       const authorsData = await fetchAndProcessAuthors();
-      // Assuming authorsData is an array of concatenated names
       setAuthors(authorsData.map((name) => ({ label: name })));
     };
     loadAuthors();

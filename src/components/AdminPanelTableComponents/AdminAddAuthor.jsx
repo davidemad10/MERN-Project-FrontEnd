@@ -1,4 +1,3 @@
-
 // import "../../styles/Adminaddbook.css";
 // import { useRef, useState } from "react";
 
@@ -20,16 +19,11 @@
 //     formData.append("disc", discRef.current.value);
 //     formData.append("image", imageRef.current.files[0]); // Assuming the image is uploaded
 
-
-
-
 //     console.log("Data: >>>    ",formData)
 //     console.log(firstNameRef.current.value)
 //     console.log(lastNameRef.current.value)
 //     console.log(discRef.current.value)
 //     console.log(imageRef.current.files[0])
-
-
 
 //     await fetch("http://localhost:5000/authors", {
 //       method: "POST",
@@ -115,32 +109,13 @@
 
 // export default AddAuthor;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import '../../styles/Adminaddbook.css'
-import { useRef, useState } from 'react';
+import "../../styles/Adminaddbook.css";
+import { useRef, useState } from "react";
 
 function AddAuthor() {
-  const firstNameRef = useRef('');
-  const lastNameRef = useRef('');
-  const discRef = useRef('');
+  const firstNameRef = useRef("");
+  const lastNameRef = useRef("");
+  const discRef = useRef("");
   const imageRef = useRef(null); // for file upload
   // const [firstName, setFirstName] = useState('');
   // const [lastName, setLastName] = useState('');
@@ -149,45 +124,49 @@ function AddAuthor() {
   function handleAuthor(e) {
     e.preventDefault();
 
-    console.log(firstNameRef.current.value)
-    console.log(lastNameRef.current.value)
-    console.log(discRef.current.value)
-    console.log(imageRef.current.files[0])
+    console.log(firstNameRef.current.value);
+    console.log(lastNameRef.current.value);
+    console.log(discRef.current.value);
+    console.log(imageRef.current.files[0]);
 
-    const authorData = new FormData()
-    authorData.append("firstName", firstNameRef.current.value)
-    authorData.append("lastName", lastNameRef.current.value)
-    authorData.append("image", imageRef.current.files[0])
-    authorData.append("disc", discRef.current.value)
-    const url = `http://localhost:5000/authors`
+    const authorData = new FormData();
+    authorData.append("firstName", firstNameRef.current.value);
+    authorData.append("lastName", lastNameRef.current.value);
+    authorData.append("image", imageRef.current.files[0]);
+    authorData.append("disc", discRef.current.value);
+    const url = `https://goodreadfdm.vercel.app/authors`;
     fetch(url, {
       method: "POST",
       headers: {
-        'authorization': `Bearer ${localStorage.getItem('jwt')}`
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
       },
-      body: authorData
+      body: authorData,
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (data.errorMessage === "invalid token") {
-          alert("This session is expired\nYou will be redirected to login page");
+          alert(
+            "This session is expired\nYou will be redirected to login page"
+          );
           window.location.reload();
-        }
-        else if (data.status === 'Fail' && data.message.includes('Book validation failed: rating: Path `rating` (23) is more than maximum allowed')) {
+        } else if (
+          data.status === "Fail" &&
+          data.message.includes(
+            "Book validation failed: rating: Path `rating` (23) is more than maximum allowed"
+          )
+        ) {
           alert("Too long name");
-        }
-        else if (data.status === "success") {
-          console.log(data)
+        } else if (data.status === "success") {
+          console.log(data);
           alert("The new Author has been added successfully");
           handleCancel();
-      } else {
+        } else {
           console.log("Author added:", data);
-      }
+        }
       })
-      .catch(error=>{
-        console.log("Error: ", error)
-      })
-
+      .catch((error) => {
+        console.log("Error: ", error);
+      });
   }
 
   function handleCancel() {
@@ -205,7 +184,7 @@ function AddAuthor() {
           id="firstName"
           ref={firstNameRef}
           required
-        // onChange={(e) => setFirstName(e.target.value)}
+          // onChange={(e) => setFirstName(e.target.value)}
         />
         <label htmlFor="lastName">Last Name:</label>
         <input
@@ -214,7 +193,7 @@ function AddAuthor() {
           id="lastName"
           ref={lastNameRef}
           required
-        // onChange={(e) => setLastName(e.target.value)}
+          // onChange={(e) => setLastName(e.target.value)}
         />
         <label htmlFor="disc">Description:</label>
         <textarea
@@ -222,7 +201,7 @@ function AddAuthor() {
           id="disc"
           ref={discRef}
           required
-        // onChange={(e) => setDisc(e.target.value)}
+          // onChange={(e) => setDisc(e.target.value)}
         ></textarea>
         <label htmlFor="authorImage">Author Image:</label>
         <input
@@ -233,8 +212,16 @@ function AddAuthor() {
           required
         />
         <div>
-          <button className="btn btn-dark mt-4 px-5" type="submit">Add Author</button>
-          <button className="btn btn-secondary ms-2 mt-4 px-5" onClick={handleCancel} type="button">Cancel</button>
+          <button className="btn btn-dark mt-4 px-5" type="submit">
+            Add Author
+          </button>
+          <button
+            className="btn btn-secondary ms-2 mt-4 px-5"
+            onClick={handleCancel}
+            type="button"
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

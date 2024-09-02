@@ -8,7 +8,7 @@ function HomeAuthorsection() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/authors")
+    fetch("https://goodreadfdm.vercel.app/authors")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

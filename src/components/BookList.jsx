@@ -11,7 +11,7 @@ function BooksList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/books")
+    fetch("https://goodreadfdm.vercel.app/books")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

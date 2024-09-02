@@ -23,7 +23,7 @@ function base64UrlDecode(base64Url) {
 
 function BooksDetails() {
   const { id } = useParams();
-  const api_uri = "http://localhost:5000/books";
+  const api_uri = "https://goodreadfdm.vercel.app/books";
   const [book, setBook] = useState(null);
   const [userq, setuserq] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -83,34 +83,35 @@ function BooksDetails() {
       });
   }, [id]);
 
-
-
   const handleAddToFavorite = async () => {
-    if (isFavorite) return; 
-    
+    if (isFavorite) return;
+
     setLoadingFavorite(true);
     try {
-      const response = await fetch(`http://localhost:5000/users/books/${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          _id: userId,
-          bookId: book?.data?.Book?._id,
-        }),
-      });
-  
+      const response = await fetch(
+        `https://goodreadfdm.vercel.app/users/books/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            _id: userId,
+            bookId: book?.data?.Book?._id,
+          }),
+        }
+      );
+
       if (!response.ok) {
         const errorResponse = await response.text();
         console.error("Error Response:", errorResponse);
         throw new Error("Failed to add to favorite.");
       }
-  
+
       const result = await response.json();
       console.log("Response Data:", result);
-  
+
       if (result.books) {
         const favoriteBook = result.books.find(
           (book) => book.bookId === book?.data?.Book?._id
@@ -123,7 +124,6 @@ function BooksDetails() {
       setLoadingFavorite(false);
     }
   };
-  
 
   // const handleRemoveFromFavorite = async () => {
   //   if (!isFavorite) return; // Prevent additional clicks if not a favorite
@@ -147,7 +147,6 @@ function BooksDetails() {
   //     setLoadingFavorite(false);
   //   }
   //   };
-
 
   const handleUpdateShelve = async (e) => {
     const selectedShelve = e.target.value;
@@ -280,17 +279,17 @@ function BooksDetails() {
 
           {token && (
             <div className={styles.favbtn}>
-            <button
-              onClick={handleAddToFavorite}
-              disabled={loadingFavorite || isFavorite}
-              className={isFavorite ? styles.favAdded : ""}
-            >
-              {isFavorite ? "Added to Favorite" : "Add to Favorite"}
-            </button>
-          </div>
-        )}
+              <button
+                onClick={handleAddToFavorite}
+                disabled={loadingFavorite || isFavorite}
+                className={isFavorite ? styles.favAdded : ""}
+              >
+                {isFavorite ? "Added to Favorite" : "Add to Favorite"}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
 
       <div className={styles.reviewsSection}>
         <h3>Reviews</h3>

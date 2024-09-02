@@ -10,11 +10,11 @@ import Login from "./components/Login/Login";
 import axios from "axios";
 import Author from "./components/AuthorList";
 import AuthorDetails from "./components/AuthorDetails";
-import Admin from './components/Admin';
+import Admin from "./components/Admin";
 import MyBooks from "./components/MyBooks";
 // import { Toaster } from "react-hot-toast";
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://goodreadfdm.vercel.app";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -28,10 +28,10 @@ function App() {
       <Route path="/categories" element={<Categories />} />
       <Route path="/categories/:id" element={<CategoriesDetails />} />
       <Route path="/authors" element={<Author />} />
-      <Route path="/authors/:id" element={<AuthorDetails/>}/>
+      <Route path="/authors/:id" element={<AuthorDetails />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/users/:id" element={<MyBooks />} />
-      </Routes>
+    </Routes>
   );
 }
 

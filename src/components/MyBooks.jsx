@@ -22,9 +22,8 @@ function MyBooks() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
   useEffect(() => {
-    fetch("http://localhost:5000/books")
+    fetch("https://goodreadfdm.vercel.app/books")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -42,7 +41,7 @@ function MyBooks() {
   }, []);
 
   const token = localStorage.getItem("token");
-  console.log(user)
+  console.log(user);
   // Decode the JWT to extract the user ID
   let userId = null;
   if (token) {
@@ -73,7 +72,7 @@ function MyBooks() {
       console.log("User ID:", userId);
 
       const response = await fetch(
-        `http://localhost:5000/users/books/${book?.data?.Book._id}`,
+        `https://goodreadfdm.vercel.app/users/books/${book?.data?.Book._id}`,
         {
           method: "POST",
           headers: {
@@ -132,7 +131,7 @@ function MyBooks() {
                   <select
                     value={book.shelve}
                     onChange={(e) =>
-                        handleUpdateShelve(book.bookId, e.target.value)
+                      handleUpdateShelve(book.bookId, e.target.value)
                     }
                     className={styles.shelveDropdown}
                   >
