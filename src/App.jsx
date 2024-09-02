@@ -11,6 +11,7 @@ import axios from "axios";
 import Author from "./components/AuthorList";
 import AuthorDetails from "./components/AuthorDetails";
 import Admin from './components/Admin';
+import MyBooks from "./components/MyBooks";
 // import { Toaster } from "react-hot-toast";
 
 axios.defaults.baseURL = "http://localhost:5000";
@@ -28,8 +29,9 @@ function App() {
       <Route path="/categories/:id" element={<CategoriesDetails />} />
       <Route path="/authors" element={<Author />} />
       <Route path="/authors/:id" element={<AuthorDetails/>}/>
-      <Route path="/admin" element={<Admin/>}/>
-    </Routes>
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/users/:id" element={<MyBooks />} />
+      </Routes>
   );
 }
 

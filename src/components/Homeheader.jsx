@@ -109,7 +109,7 @@ function Homeheader({ sendData }) {
                 <>
                   <li className="nav-item">
                     <Link
-                      to="/users/#"
+                      to="/users/:id"
                       style={fontSize}
                       className="nav-link link-dark"
                     >
