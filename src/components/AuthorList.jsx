@@ -47,7 +47,9 @@ function Author() {
                   src={author.image} // Assuming each author has an image property
                   alt={author.firstName} // Use author's first name as alt text
                 ></img>
-                <h2>{author.firstName} {author.lastName}</h2>
+                <h2>
+                  {author.firstName} {author.lastName}
+                </h2>
                 <p>{author.disc}</p>
               </Link>
             </div>

@@ -54,14 +54,17 @@ function AuthorDetails() {
         <div>
           <p>{`${author.data.oneAuthor.firstName} ${author.data.oneAuthor.lastName}`}</p>
           <div className={styles.descContainer}>
-            <span style={{ fontSize: "1rem" }}>{author.data.oneAuthor.disc}</span>
+            <span style={{ fontSize: "1rem" }}>
+              {author.data.oneAuthor.disc}
+            </span>
           </div>
         </div>
       </div>
 
       <div className={styles.reviewsSection}>
         <h3>Books by this Author</h3>
-        {author.data.oneAuthor.books && author.data.oneAuthor.books.length > 0 ? (
+        {author.data.oneAuthor.books &&
+        author.data.oneAuthor.books.length > 0 ? (
           author.data.oneAuthor.books.map((book) => (
             <div key={book._id} className={styles.reviewCard}>
               <Link to={`/books/${book._id}`} className="no-decoration">
